@@ -1,0 +1,210 @@
+/* src/styles/global.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap');
+
+:root {
+  /* Gradient Theme (Palette) */
+  --gradient-start: #1f0011;
+  --gradient-mid1: #2b0d20;
+  --gradient-mid2: #542e46;
+  --gradient-mid3: #90607e;
+  --gradient-end: #d097ba;
+  --gradient-main: linear-gradient(to right top, var(--gradient-start), var(--gradient-mid1), var(--gradient-mid2), var(--gradient-mid3), var(--gradient-end));
+
+  /* Colors derived from gradient (Palette) */
+  --text-on-gradient: #f8f0fc;
+  --accent-pink: #d097ba;
+  --accent-purple: #90607e;
+  --accent-deep-purple: #542e46;
+  --accent-highlight: #ffcdea;
+
+  /* General Palette Colors */
+  --bg-white: #ffffff;
+  --bg-off-white: #f9f7fb;
+  --text-dark-primary: #212529;
+  --text-dark-secondary: #333333; /* Common dark text, used as default light theme text */
+  --text-muted: #5a5a5a;
+  --card-border-light-rgba: rgba(0, 0, 0, 0.08); /* Renamed for clarity */
+  --card-shadow-light-rgba: rgba(0, 0, 0, 0.05); /* Renamed for clarity */
+  --card-border-explicit-light: #dddddd;
+  --card-shadow-hover-light-rgba: rgba(0, 0, 0, 0.1); /* Renamed for clarity */
+
+  /* Navbar Specific (Palette - can be overridden in Navbar.module.css) */
+  --navbar-bg-color: rgba(43, 13, 32, 0.8);
+  --navbar-border-color: rgba(248, 240, 252, 0.1);
+  --navbar-shadow-color: rgba(0, 0, 0, 0.2);
+  --navbar-text-color: var(--text-on-gradient);
+  --navbar-logo-text-color: var(--text-on-gradient);
+  --link-hover-color-navbar: var(--accent-highlight); /* More specific name */
+
+  /* Font */
+  --font-primary: 'Poppins', sans-serif;
+
+  /* --- THEME SEMANTIC VARIABLES --- */
+  /* Defaulting to light theme values. ThemeContext should always apply a theme class. */
+  --theme-page-background: var(--bg-white);
+  --theme-page-text: var(--text-dark-secondary);
+
+  --theme-card-background: var(--bg-off-white);
+  --theme-card-border: var(--card-border-explicit-light);
+  --theme-card-text: var(--text-dark-secondary);
+  --theme-card-shadow: 0 1px 3px var(--card-shadow-light-rgba); /* Example shadow */
+
+  --theme-input-background: var(--bg-white);
+  --theme-input-text: var(--text-dark-secondary);
+  --theme-input-border: #cccccc;
+  --theme-input-focus-border: var(--accent-purple); /* Example focus color */
+  --theme-input-focus-shadow: 0 0 0 0.2rem rgba(144, 96, 126, 0.25); /* Example focus shadow */
+
+
+  --theme-button-background: #f0f0f0;
+  --theme-button-text: var(--text-dark-secondary);
+  --theme-button-border: #cccccc;
+  --theme-button-hover-background: #e0e0e0;
+  --theme-button-active-background: #d0d0d0;
+
+  --theme-link-text: var(--accent-purple);
+  --theme-link-hover-text: var(--accent-deep-purple);
+
+  /* Add more semantic variables as your UI grows */
+  /* e.g., --theme-primary-accent, --theme-secondary-accent, --theme-border-subtle, etc. */
+}
+
+body {
+  font-family: var(--font-primary);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  /* Apply semantic theme variables */
+  background-color: var(--theme-page-background);
+  color: var(--theme-page-text);
+
+  /* Transition for theme changes */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* Basic reset for links */
+a {
+  text-decoration: none;
+  color: var(--theme-link-text); /* Use theme variable for links */
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: var(--theme-link-hover-text);
+}
+
+/* Light Theme specific definitions for semantic variables */
+.light-theme {
+  --theme-page-background: var(--bg-white);
+  --theme-page-text: var(--text-dark-secondary);
+
+  --theme-card-background: var(--bg-off-white);
+  --theme-card-border: var(--card-border-explicit-light);
+  --theme-card-text: var(--text-dark-secondary);
+  --theme-card-shadow: 0 1px 3px var(--card-shadow-light-rgba);
+
+
+  --theme-input-background: var(--bg-white);
+  --theme-input-text: var(--text-dark-secondary);
+  --theme-input-border: #cccccc;
+  --theme-input-focus-border: var(--accent-purple);
+  --theme-input-focus-shadow: 0 0 0 0.2rem rgba(144, 96, 126, 0.25);
+
+
+  --theme-button-background: #f0f0f0;
+  --theme-button-text: var(--text-dark-secondary);
+  --theme-button-border: #cccccc;
+  --theme-button-hover-background: #e0e0e0;
+  --theme-button-active-background: #d0d0d0;
+
+  --theme-link-text: var(--accent-purple);
+  --theme-link-hover-text: var(--accent-deep-purple);
+}
+
+/* Dark Theme specific definitions for semantic variables */
+.dark-theme {
+  --theme-page-background: #2c2c2c;
+  --theme-page-text: #e0e0e0;
+
+  --theme-card-background: #3a3a3a;
+  --theme-card-border: #555555;
+  --theme-card-text: #e0e0e0;
+  --theme-card-shadow: 0 1px 3px rgba(0,0,0,0.3); /* Darker shadow for dark theme */
+
+  --theme-input-background: #444444;
+  --theme-input-text: #eeeeee;
+  --theme-input-border: #666666;
+  --theme-input-focus-border: var(--accent-pink); /* Lighter focus for dark theme */
+  --theme-input-focus-shadow: 0 0 0 0.2rem rgba(208, 151, 186, 0.3); /* Lighter focus shadow */
+
+  --theme-button-background: #505050;
+  --theme-button-text: #eeeeee;
+  --theme-button-border: #666666;
+  --theme-button-hover-background: #5f5f5f;
+  --theme-button-active-background: #454545;
+
+  --theme-link-text: var(--accent-pink);
+  --theme-link-hover-text: var(--accent-highlight);
+}
+
+/* Generic component styling using the semantic theme variables */
+/* Example: .my-card (you might have this in a CSS module or here if truly global) */
+.my-card {
+  background-color: var(--theme-card-background);
+  border: 1px solid var(--theme-card-border);
+  color: var(--theme-card-text);
+  box-shadow: var(--theme-card-shadow);
+  padding: 1rem;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem; /* Example spacing */
+}
+
+/* Global styles for form elements */
+input,
+select,
+textarea {
+  background-color: var(--theme-input-background);
+  color: var(--theme-input-text);
+  border: 1px solid var(--theme-input-border);
+  padding: 0.5em 0.75em;
+  border-radius: 0.25rem;
+  font-family: inherit;
+  font-size: 1rem; /* Ensure consistent font size */
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--theme-input-focus-border);
+  box-shadow: var(--theme-input-focus-shadow);
+}
+
+button {
+  background-color: var(--theme-button-background);
+  color: var(--theme-button-text);
+  border: 1px solid var(--theme-button-border);
+  padding: 0.6em 1.2em; /* Slightly more padding for better click target */
+  cursor: pointer;
+  border-radius: 0.25rem;
+  font-family: inherit;
+  font-size: 1rem; /* Ensure consistent font size */
+  font-weight: 500; /* Buttons often have slightly bolder text */
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--theme-button-hover-background);
+}
+
+button:active {
+  background-color: var(--theme-button-active-background);
+}
+
+/* You can add more global element styles or utility classes here */

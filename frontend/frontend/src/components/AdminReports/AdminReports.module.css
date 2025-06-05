@@ -1,0 +1,300 @@
+/* src/components/AdminReports/AdminReports.module.css */
+.reportsContainer {
+    padding: 25px;
+    background-color: #f9f9fc;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    font-family: 'Poppins', sans-serif;
+}
+
+.pageTitle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+    font-weight: 600;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.pageTitle svg {
+    color: #dc3545; /* Red flag color */
+}
+
+.controlsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 15px;
+}
+
+.filterGroup {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filterGroup label {
+    font-weight: 500;
+    color: #555;
+}
+
+.filterSelect {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 0.95em;
+    cursor: pointer;
+    min-width: 150px; /* Give it some base width */
+}
+
+.refreshButton {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.refreshButton:hover {
+    background-color: #0056b3;
+}
+
+.refreshButton svg {
+    font-size: 1em;
+}
+
+
+.tableContainer {
+    overflow-x: auto; /* Allow horizontal scrolling on small screens */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.reportsTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95em;
+}
+
+.reportsTable th,
+.reportsTable td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.reportsTable th {
+    background-color: #f4f6f8;
+    color: #333;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 0.5px;
+}
+
+.reportsTable tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.reportsTable tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+.reasonCell {
+    max-width: 250px; /* Limit width */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: help; /* Indicate more content on hover/click */
+}
+
+.statusCell {
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+/* Status-specific row styling (optional) */
+.status-pending {
+    /* Optional: Add subtle background or border */
+}
+.status-resolved {
+    background-color: #e9f7ef; /* Light green */
+}
+.status-dismissed {
+    background-color: #fdecea; /* Light red/pink */
+    opacity: 0.8;
+}
+.status-dismissed td {
+    color: #666;
+}
+
+
+.actionButtonsCell {
+    /* Ensure buttons don't wrap unnecessarily */
+    white-space: nowrap;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.actionButton {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: opacity 0.2s ease, transform 0.1s ease;
+    color: white;
+}
+.actionButton:active {
+    transform: scale(0.95);
+}
+
+.actionButton svg {
+    font-size: 1.1em; /* Make icons slightly larger */
+}
+
+.detailsButton {
+    background-color: #17a2b8; /* Info blue */
+}
+.detailsButton:hover {
+    opacity: 0.85;
+}
+
+.resolveButton {
+    background-color: #28a745; /* Success green */
+}
+.resolveButton:hover {
+    opacity: 0.85;
+}
+
+.dismissButton {
+    background-color: #dc3545; /* Danger red */
+}
+.dismissButton:hover {
+    opacity: 0.85;
+}
+
+.noResults {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    font-style: italic;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .reasonCell {
+        max-width: 180px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .pageTitle {
+        font-size: 1.5em;
+    }
+    .controlsContainer {
+        flex-direction: column;
+        align-items: stretch; /* Make controls full width */
+    }
+    .filterSelect {
+        width: 100%; /* Make select full width */
+    }
+    .refreshButton {
+        justify-content: center; /* Center icon and text */
+    }
+
+    /* Responsive Table: Hide headers, use data-labels */
+    .reportsTable thead {
+        display: none;
+    }
+    .reportsTable, .reportsTable tbody, .reportsTable tr, .reportsTable td {
+        display: block;
+        width: 100%;
+    }
+    .reportsTable tr {
+        margin-bottom: 15px;
+        border: 1px solid #eee;
+        border-radius: 5px;
+        overflow: hidden; /* Clip content within the rounded border */
+    }
+    .reportsTable td {
+        text-align: right; /* Align content to the right */
+        padding-left: 50%; /* Create space for the label */
+        position: relative;
+        border-bottom: 1px solid #eee; /* Separator between rows */
+    }
+    .reportsTable td:last-child {
+         border-bottom: none;
+    }
+    .reportsTable td::before {
+        content: attr(data-label); /* Use data-label for pseudo-header */
+        position: absolute;
+        left: 10px;
+        width: calc(50% - 20px); /* Adjust width */
+        padding-right: 10px;
+        font-weight: bold;
+        text-align: left;
+        white-space: nowrap;
+        color: #333;
+    }
+
+    .reasonCell {
+        max-width: none; /* Allow full width */
+        white-space: normal; /* Allow wrapping */
+        text-align: right; /* Keep alignment consistent */
+    }
+
+    .actionButtonsCell {
+         padding-bottom: 10px; /* Add some space below buttons */
+    }
+    .actionButtons {
+        justify-content: flex-end; /* Align buttons to the right */
+        flex-wrap: wrap; /* Allow buttons to wrap */
+    }
+    .actionText {
+        display: none; /* Hide text on small screens by default */
+    }
+    .actionButton {
+        padding: 8px; /* Slightly larger touch target */
+    }
+    /* Optionally show text if space allows or on hover/focus */
+    .actionButton:hover .actionText,
+    .actionButton:focus .actionText {
+         display: inline;
+    }
+}
+
+@media (max-width: 480px) {
+    .reportsContainer {
+        padding: 15px;
+    }
+    .pageTitle {
+        font-size: 1.3em;
+        margin-bottom: 15px;
+    }
+    .actionButton {
+        font-size: 0.85em; /* Smaller font on very small screens */
+    }
+}

@@ -1,0 +1,251 @@
+/* src/components/AdminSettings/AdminSettings.module.css */
+.settingsContainer {
+    padding: 25px;
+    background-color: #f9f9fc;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    font-family: 'Poppins', sans-serif;
+}
+
+.pageTitle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 1.8em;
+    font-weight: 600;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.pageTitle svg {
+    color: #6c757d; /* Gray */
+}
+
+.settingsSection {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    overflow: hidden; /* Contain background/borders */
+}
+
+.sectionTitle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #444;
+    background-color: #f8f9fa;
+    padding: 12px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    margin: 0;
+}
+
+.sectionTitle svg {
+    color: #007bff; /* Default icon color */
+}
+
+.settingsSection:nth-of-type(2) .sectionTitle svg { color: #17a2b8; } /* Email */
+.settingsSection:nth-of-type(3) .sectionTitle svg { color: #ffc107; } /* Tools */
+.settingsSection:nth-of-type(4) .sectionTitle svg { color: #28a745; } /* UserShield */
+
+
+.sectionContent {
+    padding: 20px;
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: #555;
+}
+
+.sectionContent p:first-of-type {
+    margin-top: 0;
+}
+
+/* Form Styles */
+.formGroup {
+    margin-bottom: 15px;
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+}
+
+.inputField {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.inputField:focus {
+    border-color: #8685ef;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(134, 133, 239, 0.2);
+}
+
+.saveButton,
+.editButton,
+.toggleButton {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.saveButton {
+    background-color: #28a745; /* Green */
+    color: white;
+    margin-top: 10px; /* Add some space above the button */
+}
+
+.saveButton:hover:not(:disabled) {
+    background-color: #218838;
+}
+
+.saveButton:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Email Templates */
+.templateList {
+    list-style: none;
+    padding: 0;
+}
+
+.templateList li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.templateList li:last-child {
+    border-bottom: none;
+}
+
+.editButton {
+    background-color: #007bff; /* Blue */
+    color: white;
+    font-size: 0.85em;
+    padding: 5px 10px;
+}
+
+.editButton:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+.editButton:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Maintenance Mode */
+.maintenanceToggle {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.statusOn, .statusOff {
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: white;
+}
+
+.statusOn {
+    background-color: #dc3545; /* Red */
+}
+
+.statusOff {
+    background-color: #28a745; /* Green */
+}
+
+.toggleOnButton {
+    background-color: #ffc107; /* Yellow/Orange */
+    color: #333;
+}
+.toggleOnButton:hover:not(:disabled) {
+    background-color: #e0a800;
+}
+
+.toggleOffButton {
+    background-color: #6c757d; /* Gray */
+    color: white;
+}
+.toggleOffButton:hover:not(:disabled) {
+    background-color: #5a6268;
+}
+
+.warningText {
+    color: #dc3545;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+/* Admin Accounts */
+.adminForm {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+.adminForm:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+.adminForm h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 30px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .pageTitle {
+        font-size: 1.5em;
+    }
+    .sectionTitle {
+        font-size: 1.2em;
+    }
+    .sectionContent {
+        padding: 15px;
+    }
+    .maintenanceToggle {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .toggleButton {
+        width: 100%;
+        justify-content: center;
+    }
+}

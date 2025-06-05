@@ -1,0 +1,251 @@
+/* src/components/AdminDashboard/AdminDashboard.module.css */
+.adminDashboardContainer {
+  padding: 2rem;
+  background-color: #f4f7fc;
+  min-height: calc(100vh - 60px); /* Adjust if needed */
+}
+
+.dashboardTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Grid layout for dashboard sections */
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.dashboardSection {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e8eaf1;
+}
+
+/* --- Stats Overview --- */
+.statsOverview {
+  grid-column: 1 / -1; /* Make stats span full width initially */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  padding: 1rem; /* Less padding for stats container */
+}
+
+.statCardLinkWrapper {
+    text-decoration: none;
+    color: inherit;
+    display: block; /* Make link take up card space */
+    transition: transform 0.2s ease;
+}
+.statCardLinkWrapper:hover {
+    transform: scale(1.03);
+}
+
+.statCard {
+  background-color: #fff; /* Ensure white background */
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid #e8eaf1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.statIconWrapper {
+  flex-shrink: 0;
+  width: 45px; /* Smaller icons */
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.statIcon {
+  font-size: 1.3rem; /* Smaller icon */
+}
+
+.statInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.statValue {
+  font-size: 1.6rem; /* Smaller value */
+  font-weight: 600;
+  color: #333;
+  line-height: 1.1;
+}
+
+.statLabel {
+  font-size: 0.8rem; /* Smaller label */
+  color: #667085;
+}
+
+/* Specific card colors (keep from previous) */
+.statCard.users .statIconWrapper { background-color: #4a90e2; }
+.statCard.tasks .statIconWrapper { background-color: #f5a623; }
+.statCard.completed .statIconWrapper { background-color: #7ed321; }
+/* Add more if needed */
+
+
+/* --- Recent Activity Section --- */
+.recentActivity {
+  /* Styles common to recent users and tasks */
+}
+
+.sectionTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid #eee;
+}
+
+.activityList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+.activityList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.2rem;
+  border-bottom: 1px dashed #eee;
+  font-size: 0.9rem;
+  gap: 0.5rem;
+}
+.activityList li:last-child {
+  border-bottom: none;
+}
+
+.activityName {
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-basis: 40%; /* Adjust basis */
+}
+
+.activityDetail {
+  color: #667085;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-basis: 35%; /* Adjust basis */
+  text-align: right;
+}
+
+.activityDate, .activityStatus {
+  font-size: 0.8rem;
+  color: #888;
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-align: right;
+  flex-basis: 25%; /* Adjust basis */
+}
+
+.activityStatus {
+  padding: 0.1rem 0.5rem;
+  border-radius: 10px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.activityStatus.pending { background-color: #feefc7; color: #92400e; }
+.activityStatus.completed { background-color: #d1fae5; color: #065f46; }
+/* Add other statuses if needed */
+
+.viewAllLink {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--accent-purple);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+.viewAllLink:hover {
+    color: var(--accent-deep-purple);
+    text-decoration: underline;
+}
+
+
+/* --- Quick Shortcuts Section --- */
+.quickShortcuts {
+  /* Span across columns if needed, or let grid handle */
+  /* grid-column: 1 / -1; */
+}
+
+.shortcutButtons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.shortcutButton {
+    flex: 1 1 auto; /* Allow buttons to grow and wrap */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.8rem 1rem;
+    background-color: #eef2f9;
+    color: var(--accent-deep-purple);
+    border: 1px solid #d1d9e6;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.shortcutButton:hover {
+    background-color: var(--accent-purple);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(123, 63, 163, 0.3);
+}
+
+/* Responsive adjustments */
+@media (min-width: 992px) {
+    .dashboardGrid {
+        /* Example: 2 columns layout on larger screens */
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .statsOverview {
+        grid-column: 1 / -1; /* Keep stats spanning */
+    }
+    .quickShortcuts {
+        grid-column: 1 / -1; /* Span shortcuts */
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboardGrid {
+        grid-template-columns: 1fr; /* Stack sections on smaller screens */
+    }
+    .statsOverview {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+    .activityList li {
+        flex-wrap: wrap; /* Allow wrapping within list items */
+    }
+    .activityName { flex-basis: 100%; margin-bottom: 0.2rem; }
+    .activityDetail { flex-basis: 50%; text-align: left;}
+    .activityDate, .activityStatus { flex-basis: 50%; }
+}

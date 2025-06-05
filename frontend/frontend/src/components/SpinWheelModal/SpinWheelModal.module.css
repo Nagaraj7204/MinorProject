@@ -1,0 +1,138 @@
+/* frontend/src/components/SpinWheelModal/SpinWheelModal.module.css */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050; /* Higher than FAB */
+  backdrop-filter: blur(5px);
+}
+
+.modalContent {
+  background-color: var(--bg-card, #eae3dc); /* Use your card background */
+  color: var(--text-primary-light-bg, #1f1a18); /* Text for light background */
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+  width: 90%;
+  max-width: 450px;
+  text-align: center;
+  position: relative;
+  animation: scaleUpModal 0.3s ease-out;
+}
+
+@keyframes scaleUpModal {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-secondary-light-bg, #6a6a6a);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.closeButton:hover {
+  color: var(--accent-cta, #3c157b);
+}
+
+.modalContent h2 {
+  font-family: 'Baloo 2', cursive;
+  color: var(--accent-highlight, #3c157b);
+  font-size: 2rem;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.spinButton,
+.collectButton {
+  background: var(--primary-gradient); /* Use your primary gradient */
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.spinButton:hover,
+.collectButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.spinButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.spinnerIcon {
+  margin-right: 8px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.errorMessage {
+  color: var(--neon-pink, #ff2d7a); /* Or your error color */
+  background-color: rgba(255, 45, 122, 0.1);
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(255, 45, 122, 0.3);
+}
+
+.resultMessage {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: rgba(0, 224, 255, 0.1); /* Light blueish background */
+  border: 1px solid var(--neon-blue, #00e0ff);
+  border-radius: 8px;
+}
+
+.resultMessage p {
+  margin: 5px 0;
+  font-size: 1.1rem;
+}
+
+.resultMessage strong {
+  color: var(--neon-purple, #8f00ff); /* Or another highlight color */
+}
+
+.modalFooterText {
+  margin-top: 25px;
+  font-size: 0.9rem;
+  color: var(--text-secondary-light-bg, #6a6a6a);
+}
+
+.alreadySpunMessage {
+  font-size: 1.1rem;
+  color: var(--text-primary-light-bg, #1f1a18);
+  margin: 30px 0;
+  font-weight: 500;
+}

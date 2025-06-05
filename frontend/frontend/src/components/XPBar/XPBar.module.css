@@ -1,0 +1,57 @@
+/* src/components/XPBar/XPBar.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.xpBarContainer {
+  width: 100%;
+  max-width: 400px;
+  margin: 15px auto;
+  font-family: 'Poppins', sans-serif;
+  padding: 12px 15px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f7ff 100%); /* Softer gradient */
+  border-radius: 12px;
+  border: 1px solid #e8e5f5; /* Lighter border */
+  box-shadow: 0 4px 10px rgba(227, 224, 243, 0.5); /* Adjusted shadow */
+  display:flex;
+  gap: 10px;
+  align-items: center;
+}
+.xpContent{
+    flex:1;
+}
+.levelDisplay {
+  font-weight: 600;
+  color: #6A67CE;
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+}
+
+.progressBarBackground {
+  height: 10px; /* Slightly smaller bar */
+  background-color: #e8e5f5; /* Lighter purple */
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  background: linear-gradient(90deg, #8685ef 0%, #a3a1f5 100%); /* Main purple gradient */
+  border-radius: 6px;
+  transition: width 0.5s ease-out;
+}
+
+.xpText {
+  font-size: 0.8rem;
+  color: #555;
+  white-space:nowrap;
+}
+@media (max-width: 480px) {
+  .xpBarContainer {
+    padding: 10px 12px;
+  }
+  .xpText {
+      font-size: 0.7rem;
+   }
+    .levelDisplay {
+      font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,295 @@
+/* c:/Users/misba/OneDrive/Documents/workopoly1_proj/frontend/src/components/Login/Login.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* --- CSS Variables (Ensure consistency or define locally) --- */
+:root {
+  /* Core colors (Task Manager Theme) */
+  --clr-primary: #5C6BC0; /* Soft Indigo */
+  --clr-accent: #FF6F61; /* Coral Rose */
+  --clr-success: #81C784; /* Emerald Mint */
+  --clr-text-primary: #333333; /* Charcoal Gray */
+  --clr-text-muted: #777C85; /* Cool Gray */
+  --clr-text-on-dark: #FAFAFA; /* Snow White */
+  --clr-text-on-accent: #FFFFFF; /* Pure White */
+  --clr-bg-main: #FAFAFA; /* Snow White */
+  --clr-bg-card: rgba(255, 255, 255, 0.98); /* Slightly transparent white for login card */
+  --clr-bg-input: #F8F9FA; /* Light grey for input background */
+
+  --text-on-gradient: var(--clr-text-on-dark); /* Text on gradient backgrounds */
+
+  --input-border-login: #dee2e6; /* Consistent with SignUp input border */
+  --input-focus-border-login: var(--clr-primary); /* Soft Indigo for focus */
+  --shadow-color-login: rgba(0, 0, 0, 0.1); /* Softer shadow for the card */
+  --gradient-main: linear-gradient(135deg, var(--clr-primary), var(--clr-success)); /* Theme gradient */
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+@keyframes inputFocusGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* --- Container --- */
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Full viewport height */
+  background: var(--gradient-main);
+  color: var(--text-on-gradient); /* Default text color for the container */
+  padding: 40px 20px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  position: relative; /* For pseudo-elements */
+  overflow: hidden; /* Contain pseudo-elements */
+  animation: fadeIn 1s ease-out forwards;
+  opacity: 0;
+  box-sizing: border-box;
+}
+
+/* --- Floating Shapes (Decorative) --- */
+.loginContainer::before,
+.loginContainer::after {
+  content: '';
+  position: absolute;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* Organic shape */
+  background: rgba(255, 255, 255, 0.04); /* Very subtle */
+  z-index: 0;
+  animation: float 15s ease-in-out infinite;
+}
+
+.loginContainer::before {
+  width: 250px;
+  height: 250px;
+  top: 10%;
+  left: 5%;
+  animation-duration: 18s; /* Vary speed */
+  animation-delay: 1s;
+}
+
+.loginContainer::after {
+  width: 180px;
+  height: 180px;
+  bottom: 15%;
+  right: 10%;
+  animation-duration: 14s;
+  border-radius: 60% 40% 30% 70% / 60% 70% 30% 40%; /* Different shape */
+}
+
+/* --- Form Card --- */
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 420px;
+  padding: 40px 35px; /* More padding */
+  background-color: var(--clr-bg-card);
+  border-radius: 16px; /* Softer radius */
+  box-shadow: 0 10px 35px var(--shadow-color-login);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+  z-index: 1; /* Above floating shapes */
+  animation: scaleUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.3s forwards; /* Delayed entry */
+  opacity: 0; /* Start hidden for animation */
+  transform-origin: center center;
+  backdrop-filter: blur(5px); /* Frosted glass effect (optional) */
+}
+
+.loginHeadline {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--clr-text-primary); /* Dark primary text on light card */
+  font-size: clamp(1.8rem, 5vw, 2.2rem);
+  font-weight: 700;
+}
+
+/* --- Form Elements --- */
+.loginForm label {
+  margin-top: 18px;
+  margin-bottom: 8px;
+  font-weight: 600; /* Match SignUp label weight */
+  color: var(--clr-text-muted); /* Dark secondary text */
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.inputWrapper {
+  position: relative; /* For focus indicator */
+  margin-bottom: 22px;
+}
+
+.loginForm input {
+  padding: 15px 18px;
+  border: 1px solid var(--input-border-login); /* Use variable */
+  border-radius: 10px; /* Consistent radius */
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  color: var(--clr-text-primary); /* Dark text for input */
+  background-color: var(--clr-bg-input); /* Consistent with SignUp */
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: none; /* Remove inset shadow */
+}
+
+.loginForm input::placeholder {
+  color: #6c757d; /* Muted placeholder */
+}
+
+/* Focus effect: Animated underline */
+.inputWrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--input-focus-border-login); /* Soft Indigo underline */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.loginForm input:focus {
+  outline: none;
+  border-color: transparent; /* Hide border */
+  background-color: #ffffff; /* Solid white on focus */
+  box-shadow: 0 0 0 3px rgba(92, 107, 192, 0.25); /* Soft Indigo focus shadow */
+}
+
+.loginForm input:focus + .inputWrapper::after, /* Sibling selector needs adjustment in JSX */
+.inputWrapper:focus-within::after { /* Better approach */
+  transform: scaleX(1);
+}
+
+/* --- Button --- */
+.loginForm button {
+  background: var(--clr-accent); /* Coral Rose button */
+  color: var(--clr-text-on-accent); /* Light text on button */
+  border: none;
+  padding: 15px 30px;
+  border-radius: 50px; /* Pill shape */
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 111, 97, 0.3); /* Coral Rose shadow */
+  font-weight: 600;
+  margin-top: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 0.5px;
+}
+.loginForm button:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(255, 111, 97, 0.35); /* Darker Coral Rose shadow */
+}
+
+.loginForm button:active {
+  transform: translateY(-1px) scale(0.99);
+  box-shadow: 0 4px 10px rgba(255, 111, 97, 0.3); /* Coral Rose shadow */
+}
+
+/* --- Link --- */
+.signUpLinkContainer {
+  margin-top: 30px;
+  font-size: 0.9rem;
+  color: var(--clr-text-muted); /* Dark secondary text */
+}
+
+.signUpLink {
+  color: var(--clr-accent); /* Coral Rose for link */
+  text-decoration: none;
+  font-weight: 600;
+  position: relative; /* For underline effect */
+  padding-bottom: 2px;
+}
+
+.signUpLink::after { /* Animated underline */
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--clr-accent); /* Coral Rose underline */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-out;
+}
+
+.signUpLink:hover::after {
+  transform: scaleX(1);
+}
+
+/* --- Error Message --- */
+.errorMessage {
+  color: #e53e3e; /* Error Red */
+  background-color: rgba(229, 62, 62, 0.1); /* Light red background */
+  border: 1px solid rgba(229, 62, 62, 0.3);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin-top: -10px;
+  margin-bottom: 15px;
+  text-align: left;
+  min-height: 1.2em;
+  display: block; /* Ensure it takes block space */
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 768px) {
+  .loginForm {
+    max-width: 400px;
+    padding: 35px 30px;
+  }
+  .loginContainer::before, .loginContainer::after {
+    width: 150px; height: 150px; /* Smaller shapes */
+  }
+}
+
+@media (max-width: 480px) {
+  .loginContainer { padding: 20px 15px; }
+  .loginForm { padding: 30px 20px; }
+  .loginHeadline { font-size: 1.7rem; margin-bottom: 25px; }
+  .loginForm button { padding: 14px 25px; font-size: 1rem; }
+  .loginContainer::before { top: 5%; left: -10%; }
+  .loginContainer::after { bottom: 5%; right: -15%; }
+}
+/* Add this to Login.module.css */
+.adminCheckboxContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0 5px 0; /* Adjust spacing */
+  font-size: 0.9rem;
+  color: var(--clr-text-muted); /* Darker grey, consistent with labels */
+  text-align: left;
+  cursor: pointer; /* Make the whole area clickable */
+}
+.adminCheckboxContainer input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  box-shadow: none;
+  cursor: pointer;
+  accent-color: var(--clr-accent); /* Use theme color - Coral Rose */
+  flex-shrink: 0;
+}
+.adminCheckboxContainer label {
+    margin: 0 !important; /* Override other label margins */
+    font-weight: normal !important;
+    cursor: pointer;
+}

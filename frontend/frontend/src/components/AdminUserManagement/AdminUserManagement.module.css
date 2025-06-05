@@ -1,0 +1,290 @@
+/* src/components/AdminUserManagement/AdminUserManagement.module.css */
+.userManagementContainer {
+    padding: 1.5rem 2rem; /* Adjust padding */
+    background-color: #fff; /* White background for the main content area */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    margin: 1rem; /* Add some margin around the container */
+  }
+  
+  .pageTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .controlsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem; /* Increased gap */
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+  }
+  
+  .searchBox {
+    display: flex;
+    align-items: center;
+    background-color: #f9fafb;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 0.6rem 1rem; /* Slightly larger padding */
+    flex-grow: 1;
+    min-width: 300px; /* Ensure decent width */
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+  }
+  
+  .controlIcon { /* Common style for icons in controls */
+    color: #6b7280;
+    margin-right: 0.7rem;
+    flex-shrink: 0;
+  }
+  
+  .searchBox input {
+    border: none;
+    background: none;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+  }
+  .searchBox input::placeholder {
+      color: #9ca3af;
+  }
+  
+  .filterGroup {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+  }
+  
+  .filterBox {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: #f9fafb;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 0.6rem 1rem; /* Match search box padding */
+  }
+  
+  .filterBox label {
+    font-size: 0.9rem;
+    color: #374151;
+    font-weight: 500;
+    margin: 0;
+    white-space: nowrap;
+  }
+  
+  .filterBox select {
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0.1rem 0.3rem;
+    color: #374151;
+  }
+  
+  .tableContainer {
+    overflow-x: auto; /* Essential for responsiveness */
+    width: 100%;
+  }
+  
+  .userTable {
+    width: 100%;
+    min-width: 800px; /* Ensure minimum width before scrolling */
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  
+  .userTable th,
+  .userTable td {
+    padding: 0.9rem 1.1rem; /* Increased padding */
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+    white-space: nowrap;
+  }
+  
+  .userTable th {
+    background-color: #f9fafb;
+    font-weight: 600;
+    color: #374151;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    position: sticky; /* Make header sticky if table scrolls vertically */
+    top: 0; /* Adjust if needed based on overall layout */
+    z-index: 10;
+  }
+  
+  .userTable tbody tr {
+      transition: background-color 0.15s ease-in-out;
+  }
+  
+  .userTable tbody tr:hover {
+    background-color: #f3f4f6; /* Subtle hover */
+  }
+  
+  /* Tag styles (keep from previous) */
+  .tag {
+    display: inline-block;
+    padding: 0.25rem 0.7rem; /* Slightly more padding */
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    line-height: 1.2;
+  }
+  
+  .tag.user { background-color: #dbeafe; color: #1d4ed8; }
+  .tag.admin { background-color: #fee2e2; color: #991b1b; }
+  .tag.active { background-color: #d1fae5; color: #065f46; }
+  .tag.blocked { background-color: #fef3c7; color: #92400e; }
+  .tag.pending_deletion { background-color: #e5e7eb; color: #4b5563; }
+  
+  .actionButtonsCell {
+      /* Ensure actions don't wrap unnecessarily */
+  }
+  
+  .actionButtons {
+    display: flex;
+    gap: 0.6rem; /* Slightly more gap */
+    align-items: center;
+  }
+  
+  .actionButton {
+    background: none;
+    border: 1px solid transparent; /* Add border for consistent size */
+    padding: 0.4rem 0.6rem; /* Adjust padding */
+    cursor: pointer;
+    border-radius: 5px; /* Slightly rounder */
+    display: inline-flex; /* Use inline-flex */
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem; /* Gap between icon and text */
+    font-size: 0.8rem; /* Font size for text */
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    white-space: nowrap;
+  }
+  
+  .actionButton svg {
+      width: 14px;
+      height: 14px;
+  }
+  
+  .actionText {
+      /* Hide text on smaller screens if needed */
+  }
+  
+  .actionButton:hover {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .editButton { color: #3b82f6; border-color: #bfdbfe; }
+  .editButton:hover { background-color: #dbeafe; }
+  
+  .blockButton { color: #f59e0b; border-color: #fde68a; }
+  .blockButton:hover { background-color: #fef3c7; }
+  
+  .unblockButton { color: #10b981; border-color: #a7f3d0; }
+  .unblockButton:hover { background-color: #d1fae5; }
+  
+  .deleteButton { color: #ef4444; border-color: #fecaca; }
+  .deleteButton:hover { background-color: #fee2e2; }
+  
+  .noResults {
+      text-align: center;
+      padding: 2rem;
+      color: #6b7280;
+      font-style: italic;
+  }
+  
+  /* Responsive Table Styles */
+  @media (max-width: 992px) {
+      .userTable th:nth-child(5), /* Hide Joined */
+      .userTable td:nth-child(5),
+      .userTable th:nth-child(6), /* Hide Last Active */
+      .userTable td:nth-child(6) {
+          display: none;
+      }
+  }
+  
+  @media (max-width: 768px) {
+      .userManagementContainer {
+          margin: 0.5rem;
+          padding: 1rem;
+      }
+      .controlsContainer {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 1rem;
+      }
+      .searchBox, .filterGroup, .filterBox {
+          min-width: 0;
+          width: 100%;
+      }
+      .userTable {
+          min-width: 0; /* Allow table to shrink */
+          display: block; /* Change table display for responsiveness */
+          width: 100%;
+      }
+      .userTable thead {
+          display: none; /* Hide table header */
+      }
+      .userTable tbody, .userTable tr, .userTable td {
+          display: block; /* Stack table elements */
+          width: 100% !important; /* Force full width */
+          text-align: right; /* Align text to the right */
+          padding-left: 50%; /* Create space for label */
+          position: relative;
+          white-space: normal; /* Allow wrapping */
+      }
+      .userTable td::before { /* Add labels using pseudo-elements */
+          content: attr(data-label); /* Get label from data attribute */
+          position: absolute;
+          left: 10px;
+          width: calc(50% - 20px); /* Adjust width */
+          padding-right: 10px;
+          font-weight: 600;
+          text-align: left;
+          color: #374151;
+          white-space: nowrap;
+      }
+      .userTable tr {
+          margin-bottom: 1rem;
+          border: 1px solid #e5e7eb;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      }
+      .userTable td {
+          border-bottom: 1px dashed #eee;
+      }
+      .userTable td:last-child {
+          border-bottom: none; /* Remove border on last cell of row */
+      }
+      .actionButtonsCell {
+          text-align: right; /* Align buttons right */
+          padding-left: 10px !important; /* Override padding */
+      }
+       .actionButtonsCell::before {
+          display: none; /* Hide label for actions cell */
+      }
+      .actionButtons {
+          justify-content: flex-end; /* Align buttons to the end */
+          gap: 0.5rem;
+      }
+      .actionText {
+          display: none; /* Hide text on small screens */
+      }
+      .actionButton {
+          padding: 0.5rem; /* Adjust padding for icon only */
+      }
+  }
+  

@@ -1,0 +1,351 @@
+/* src/components/AdminLeaderboard/AdminLeaderboard.module.css */
+.leaderboardContainer {
+    padding: 1.5rem 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    margin: 1rem;
+  }
+  
+  .pageTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .pageTitle svg {
+      color: #f59e0b; /* Gold color for trophy */
+  }
+  
+  .controlsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+    justify-content: space-between; /* Push items apart */
+  }
+  
+  .searchBox {
+    display: flex;
+    align-items: center;
+    background-color: #f9fafb;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    flex-grow: 1; /* Allow search to take available space */
+    max-width: 400px; /* Limit search width */
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+  }
+  
+  .controlIcon {
+    color: #6b7280;
+    margin-right: 0.7rem;
+    flex-shrink: 0;
+  }
+  
+  .searchBox input {
+    border: none;
+    background: none;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+  }
+  .searchBox input::placeholder {
+      color: #9ca3af;
+  }
+  
+  /* General Action Button Style (for Reset) */
+  .actionButton {
+    background: none;
+    border: 1px solid transparent;
+    padding: 0.6rem 1rem; /* Adjust padding */
+    cursor: pointer;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    white-space: nowrap;
+  }
+  .actionButton svg {
+      width: 15px;
+      height: 15px;
+  }
+  .actionButton:hover {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  /* Reset Button Specific Style */
+  .resetButton {
+    color: #dc2626; /* Red */
+    border-color: #fecaca;
+    background-color: #fee2e2;
+  }
+  .resetButton:hover {
+    background-color: #ef4444;
+    color: #fff;
+    border-color: #ef4444;
+  }
+  
+  
+  .tableContainer {
+    overflow-x: auto;
+    width: 100%;
+  }
+  
+  .leaderboardTable {
+    width: 100%;
+    min-width: 650px; /* Adjust min-width */
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  
+  .leaderboardTable th,
+  .leaderboardTable td {
+    padding: 0.9rem 1.1rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+    white-space: nowrap;
+  }
+  
+  .leaderboardTable th {
+    background-color: #f9fafb;
+    font-weight: 600;
+    color: #374151;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .leaderboardTable th:first-child, /* Rank */
+  .leaderboardTable td:first-child {
+      text-align: center;
+      width: 60px; /* Fixed width for rank */
+  }
+  .leaderboardTable th:nth-child(3), /* Points */
+  .leaderboardTable td:nth-child(3) {
+      text-align: right;
+      font-weight: 500;
+  }
+  .leaderboardTable th:nth-child(4), /* Level */
+  .leaderboardTable td:nth-child(4) {
+      text-align: center;
+      width: 80px;
+  }
+  
+  
+  .leaderboardTable tbody tr {
+      transition: background-color 0.15s ease-in-out;
+  }
+  
+  .leaderboardTable tbody tr:hover {
+    background-color: #f3f4f6;
+  }
+  
+  .actionButtonsCell {
+      width: 150px; /* Fixed width for actions */
+  }
+  
+  .actionButtons {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+  }
+  
+  /* Adjust Button Style (within table) */
+  .adjustButton {
+    color: #059669; /* Green */
+    border-color: #a7f3d0;
+  }
+  .adjustButton:hover {
+    background-color: #d1fae5;
+  }
+  
+  .actionText {
+      /* Hide text on smaller screens if needed */
+  }
+  
+  .noResults {
+      text-align: center;
+      padding: 2rem;
+      color: #6b7280;
+      font-style: italic;
+  }
+  
+  /* Adjust Points Modal Styles (Simple Overlay) */
+  .adjustModalOverlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 1rem;
+  }
+  
+  .adjustModal {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+  }
+  
+  .adjustModal h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: #333;
+      font-size: 1.3rem;
+  }
+  .adjustModal p {
+      margin-bottom: 1.5rem;
+      color: #555;
+  }
+  
+  .adjustModal form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #374151;
+  }
+  
+  .adjustModal form input[type="number"] {
+      width: 100%;
+      padding: 0.7rem 0.8rem;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      box-sizing: border-box;
+  }
+  
+  .modalActions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.8rem;
+      margin-top: 1rem;
+  }
+  
+  .modalActions button {
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      border: none;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+  }
+  
+  .saveButton {
+      background-color: var(--accent-purple);
+      color: #fff;
+  }
+  .saveButton:hover {
+      background-color: var(--accent-deep-purple);
+  }
+  
+  .cancelButton {
+      background-color: #e5e7eb;
+      color: #374151;
+  }
+  .cancelButton:hover {
+      background-color: #d1d5db;
+  }
+  
+  
+  /* Responsive Table Styles */
+  @media (max-width: 768px) {
+      .leaderboardContainer {
+          margin: 0.5rem;
+          padding: 1rem;
+      }
+      .controlsContainer {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 1rem;
+      }
+      .searchBox {
+          max-width: none;
+      }
+      .leaderboardTable {
+          min-width: 0;
+          display: block;
+          width: 100% !important;
+      }
+      .leaderboardTable thead {
+          display: none;
+      }
+      .leaderboardTable tbody, .leaderboardTable tr, .leaderboardTable td {
+          display: block;
+          width: 100% !important;
+          text-align: right;
+          padding-left: 40%; /* Adjust space for label */
+          position: relative;
+          white-space: normal;
+      }
+      .leaderboardTable td::before {
+          content: attr(data-label);
+          position: absolute;
+          left: 10px;
+          width: calc(40% - 20px); /* Adjust width */
+          padding-right: 10px;
+          font-weight: 600;
+          text-align: left;
+          color: #374151;
+          white-space: nowrap;
+          font-size: 0.8rem; /* Smaller label */
+      }
+      .leaderboardTable tr {
+          margin-bottom: 1rem;
+          border: 1px solid #e5e7eb;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      }
+      .leaderboardTable td {
+          border-bottom: 1px dashed #eee;
+          padding-top: 0.8rem;
+          padding-bottom: 0.8rem;
+      }
+      .leaderboardTable td:last-child {
+          border-bottom: none;
+      }
+      .actionButtonsCell {
+          text-align: right;
+          padding-left: 10px !important;
+      }
+       .actionButtonsCell::before {
+          display: none;
+      }
+      .actionButtons {
+          justify-content: flex-end;
+          gap: 0.5rem;
+      }
+      .actionText {
+          display: none;
+      }
+      .actionButton {
+          padding: 0.5rem;
+      }
+      .leaderboardTable td:first-child, /* Rank */
+      .leaderboardTable td:nth-child(3), /* Points */
+      .leaderboardTable td:nth-child(4) { /* Level */
+          text-align: right; /* Override specific alignments */
+          width: auto !important; /* Override fixed widths */
+      }
+  }
+  

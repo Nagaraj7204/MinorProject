@@ -1,0 +1,48 @@
+/* frontend/src/components/SpinWheelButton/SpinWheelButton.module.css */
+.spinWheelFab {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--accent-gold, #FFD700); /* Gold color, define in your globals or here */
+  color: var(--text-primary-dark-bg, #1f1a18); /* Text color that contrasts with gold */
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1000; /* Ensure it's above other content */
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  outline: none;
+}
+
+.spinWheelFab:hover {
+  transform: scale(1.1);
+  background-color: var(--accent-gold-hover, #f0c000); /* Slightly darker gold on hover */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.spinWheelFab:active {
+  transform: scale(1.05);
+}
+
+/* Add these variables to your global.css or a theme file if not already present */
+/*
+:root {
+  --accent-gold: #FFD700;
+  --accent-gold-hover: #e6c200;
+  --text-on-gold: #333;
+}
+*/
+.spinWheelFab:active {
+  transform: scale(1.05);
+}
+
+.spinWheelFab.disabled {
+  background-color: #aaa; /* Grey out when disabled */
+  cursor: not-allowed;
+  opacity: 0.7;
+}

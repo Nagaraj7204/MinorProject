@@ -1,0 +1,218 @@
+/* src/pages/UserFeedbackPage.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Core colors (Task Manager Theme from Home.module.css) */
+  --bg-section: #354a54;
+  --bg-card: #ffffff;
+  --bg-header-footer: #354a54;
+
+  --text-primary-dark-bg: #f0f0f0;
+  --text-secondary-dark-bg: #81b2c9;
+
+  --text-primary-light-bg: #1f1a18;
+  --text-secondary-light-bg: #4b5563;
+  --text-on-gradient: #f0f0f0;
+
+  /* Accent colors (Task Manager Theme) */
+  --accent-cta: #3c157b; /* Violet */
+  --accent-highlight: #3c157b; /* Violet */
+  --accent-interactive: #1b81a1; /* Teal */
+  --accent-divider: #81b2c9; /* Sky Blue */
+
+  /* Standard UI Elements */
+  --input-border-color: #d1d5db;
+  --input-focus-border-color: var(--accent-interactive); /* Teal for input focus */
+  --input-focus-shadow-color: rgba(27, 129, 161, 0.25); /* Teal shadow for input focus */
+  --card-border-color: #e0e0e0;
+  --card-shadow-color: rgba(0, 0, 0, 0.08);
+
+  --color-success: #28a745;
+  --color-success-bg-light: rgba(40, 167, 69, 0.1);
+  --color-success-border: rgba(40, 167, 69, 0.3);
+  --color-success-text: #155724;
+
+  --color-error: #dc3545;
+  --color-error-bg-light: rgba(220, 53, 69, 0.05);
+  --color-error-border: rgba(220, 53, 69, 0.3);
+  --color-error-text: #b91c1c;
+
+  --font-primary: 'Poppins', sans-serif;
+  --transition-fast: all 0.2s ease-in-out;
+}
+
+.feedbackPageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 120px);
+    padding: 2rem 1rem;
+    background-color: #f4f7f9; /* Light page background */
+    font-family: var(--font-primary);
+}
+
+.feedbackFormCard {
+    background-color: var(--bg-card); /* White card */
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px var(--card-shadow-color);
+    width: 100%;
+    max-width: 650px;
+    text-align: center;
+    border: 1px solid var(--card-border-color);
+}
+
+.pageTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent-cta); /* Violet */
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+}
+
+.pageTitle svg {
+    color: var(--accent-interactive); /* Teal icon */
+}
+
+.subTitle {
+    font-size: 1rem;
+    color: var(--text-secondary-light-bg); /* Muted dark text */
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.feedbackForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.formGroup {
+    text-align: left;
+}
+
+.label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-secondary-light-bg); /* Muted dark text */
+    margin-bottom: 0.5rem;
+}
+
+.selectInput,
+.textareaInput {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border: 1px solid var(--input-border-color);
+    border-radius: 8px; /* Softer radius */
+    background-color: #fdfdfd; /* Slightly off-white input background */
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    box-sizing: border-box;
+    color: var(--text-primary-light-bg); /* Dark text for input */
+}
+
+.selectInput:focus,
+.textareaInput:focus {
+    border-color: var(--input-focus-border-color); /* Teal focus border */
+    box-shadow: 0 0 0 3px var(--input-focus-shadow-color); /* Teal focus shadow */
+    outline: none;
+}
+
+.textareaInput {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.submitButton {
+    background-color: var(--accent-interactive); /* Teal button */
+    color: var(--text-primary-dark-bg); /* Light text */
+    padding: 0.8rem 1.5rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px; /* Softer radius */
+    cursor: pointer;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    align-self: center;
+    box-shadow: 0 4px 10px rgba(27, 129, 161, 0.2); /* Teal shadow */
+}
+
+.submitButton:hover:not(:disabled) {
+    background-color: #166a83; /* Darker Teal */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(27, 129, 161, 0.3);
+}
+
+.submitButton:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.submitButton:disabled {
+    background-color: var(--accent-divider); /* Sky Blue for disabled */
+    color: var(--text-secondary-light-bg);
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.submitButton svg {
+    margin-right: 0.3rem;
+}
+
+.errorMessage,
+.successMessage {
+    padding: 0.8rem 1.2rem; /* Adjusted padding */
+    margin-bottom: 1.5rem;
+    border-radius: 8px; /* Softer radius */
+    font-size: 0.95rem;
+    text-align: left;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.errorMessage {
+    background-color: var(--color-error-bg-light);
+    color: var(--color-error-text);
+    border-color: var(--color-error-border);
+}
+
+.successMessage {
+    background-color: var(--color-success-bg-light);
+    color: var(--color-success-text);
+    border-color: var(--color-success-border);
+}
+
+@media (max-width: 768px) {
+    .feedbackFormCard {
+        padding: 2rem;
+    }
+    .pageTitle {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .feedbackPageContainer {
+        padding: 1rem;
+    }
+    .feedbackFormCard {
+        padding: 1.5rem;
+        border-radius: 8px;
+    }
+    .pageTitle {
+        font-size: 1.5rem;
+    }
+    .subTitle {
+        font-size: 0.9rem;
+    }
+    .submitButton {
+        width: 100%; /* Full width button on small screens */
+    }
+}

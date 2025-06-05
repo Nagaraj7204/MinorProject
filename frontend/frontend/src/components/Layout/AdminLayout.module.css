@@ -1,0 +1,23 @@
+/* src/components/Layout/AdminLayout.module.css */
+.adminLayout {
+    display: flex;
+    min-height: 100vh;
+    background-color: #eef2f9; /* Slightly different background maybe */
+  }
+  
+  .adminContent {
+    flex-grow: 1;
+    padding: 2rem;
+    overflow-y: auto;
+  }
+  
+  /* Example media query for responsiveness */
+  @media (max-width: 768px) {
+    .adminLayout {
+      flex-direction: column;
+    }
+    .adminContent {
+      padding: 1rem;
+    }
+  }
+  

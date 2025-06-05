@@ -1,0 +1,143 @@
+/* src/components/Sidebar/Sidebar.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Core colors (Task Manager Theme from Home.module.css) */
+  --bg-section: #354a54;
+  --bg-card: #ffffff;
+  --bg-header-footer: #354a54;
+
+  --text-primary-dark-bg: #f0f0f0;
+  --text-secondary-dark-bg: #81b2c9;
+
+  --text-primary-light-bg: #1f1a18;
+  --text-secondary-light-bg: #495057;
+  --text-on-gradient: #f0f0f0;
+
+  /* Accent colors (Task Manager Theme) */
+  --accent-cta: #3c157b; /* Violet */
+  --accent-highlight: #3c157b; /* Violet */
+  --accent-interactive: #1b81a1; /* Teal */
+  --accent-divider: #81b2c9; /* Sky Blue */
+
+  /* Sidebar specific or general UI colors */
+  --sidebar-bg: var(--bg-card); /* White background for sidebar */
+  --sidebar-border-color: #e9ecef;
+  --sidebar-text-primary: var(--text-primary-light-bg); /* Dark text */
+  --sidebar-text-secondary: var(--text-secondary-light-bg); /* Muted dark text */
+  
+  --sidebar-active-bg: var(--accent-interactive); /* Teal for active background */
+  --sidebar-active-text: var(--text-primary-dark-bg); /* Light text on Teal */
+  
+  --sidebar-hover-bg: rgba(27, 129, 161, 0.1); /* Light Teal for hover background */
+  --sidebar-hover-text: var(--accent-interactive); /* Teal text on hover */
+  
+  --sidebar-shadow-color: rgba(0, 0, 0, 0.04);
+
+  --font-primary: 'Poppins', sans-serif;
+  --transition-fast: all 0.2s ease-in-out;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--sidebar-border-color);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  box-shadow: 3px 0 8px var(--sidebar-shadow-color);
+  font-family: var(--font-primary);
+}
+
+.sidebarHeader {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--sidebar-border-color);
+}
+
+.sidebarHeader h2 {
+  margin: 0;
+  color: var(--accent-cta); /* Violet for header text */
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.sidebarNavList {
+  list-style: none;
+  padding: 1rem 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.sidebarNavList li {
+  margin: 0;
+}
+
+.sidebarLink {
+  display: flex;
+  align-items: center;
+  padding: 0.9rem 1.5rem;
+  text-decoration: none;
+  color: var(--sidebar-text-secondary);
+  font-weight: 500;
+  transition: background-color var(--transition-fast), color var(--transition-fast), border-left-color var(--transition-fast);
+  gap: 0.8rem;
+  border-left: 4px solid transparent;
+  margin: 0.1rem 0;
+}
+
+.sidebarLink:hover {
+  background-color: var(--sidebar-hover-bg);
+  color: var(--sidebar-hover-text);
+  border-left-color: var(--accent-interactive); /* Teal border on hover */
+}
+
+.sidebarLink.active {
+  background-color: var(--sidebar-active-bg);
+  color: var(--sidebar-active-text);
+  font-weight: 600;
+  border-left-color: var(--accent-cta); /* Violet border for active */
+}
+
+.sidebarLink.active:hover {
+    background-color: var(--accent-interactive); /* Keep Teal */
+    color: var(--sidebar-active-text);
+    /* border-left-color: var(--accent-highlight); */ /* Keep Violet or make slightly darker Teal */
+}
+
+.sidebarFooter {
+  padding: 1rem;
+  border-top: 1px solid var(--sidebar-border-color);
+  margin-top: auto;
+}
+
+.logoutButton {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background-color: rgba(60, 21, 123, 0.1); /* Light Violet background */
+  color: var(--accent-cta); /* Violet text */
+  border: 1px solid var(--accent-cta); /* Violet border */
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  text-align: left;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.logoutButton:hover {
+  background-color: var(--accent-cta); /* Solid Violet on hover */
+  color: var(--text-primary-dark-bg); /* Light text on hover */
+}
+
+.sidebarLink span,
+.logoutButton span {
+  display: inline-block;
+  min-width: 22px;
+  text-align: center;
+  font-size: 1.1em;
+}

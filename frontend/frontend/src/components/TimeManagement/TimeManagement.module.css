@@ -1,0 +1,156 @@
+/* src/components/TimeManagement/TimeManagement.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Re-use styles from TaskManagement.module.css --- */
+/* Apply the same enhanced styles here */
+
+/* Subtle background pattern (optional) */
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 60px);
+  /* Slightly different base for variety */
+  background-color: #f8f7ff;
+  background-image:
+    radial-gradient(circle at 1px 1px, #e3e0f3 1px, transparent 0); /* Subtle dots */
+  background-size: 20px 20px;
+  padding: 50px 25px;
+  font-family: 'Poppins', sans-serif;
+  opacity: 0;
+  animation: fadeIn 0.9s ease-out forwards;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.contentWrapper {
+  max-width: 1000px;
+  width: 100%;
+}
+
+.pageIcon {
+  font-size: 3.8rem;
+  color: #8685ef;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 5px rgba(134, 133, 239, 0.2);
+}
+
+.pageImage {
+  max-width: 280px;
+  height: auto;
+  margin-bottom: 25px;
+}
+
+.pageTitle {
+  color: #6A67CE;
+  font-size: clamp(2.2rem, 5.5vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 18px;
+  letter-spacing: -0.5px;
+}
+
+.pageSubtitle {
+  font-size: clamp(1.05rem, 3vw, 1.25rem);
+  color: #555;
+  margin-bottom: 50px;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+.featureList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+  text-align: left;
+}
+
+.featureItem {
+  background: linear-gradient(145deg, #ffffff 0%, #fdfcff 100%);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 18px rgba(227, 224, 243, 0.7);
+  border: 1px solid #e8e5f5;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.featureItem::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #8685ef;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+}
+
+.featureItem:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(134, 133, 239, 0.4);
+}
+
+.featureItem:hover::before {
+    transform: scaleX(1);
+}
+
+.featureIcon {
+    font-size: 1.5rem;
+    color: #8685ef;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.featureItem h3 {
+  color: #6A67CE;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.featureItem p {
+  font-size: 0.98rem;
+  color: #444;
+  line-height: 1.65;
+}
+
+.callToAction {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #6A67CE;
+  margin-top: 25px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+   .featureList {
+       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+   }
+}
+
+@media (max-width: 768px) {
+  .pageContainer {
+    padding: 40px 20px;
+  }
+  .pageSubtitle {
+    margin-bottom: 40px;
+  }
+  .featureList {
+    gap: 20px;
+  }
+}

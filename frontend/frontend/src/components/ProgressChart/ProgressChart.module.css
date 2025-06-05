@@ -1,0 +1,36 @@
+/* src/components/ProgressChart/ProgressChart.module.css */
+
+.chartContainer {
+    position: relative; /* Needed for chart responsiveness */
+    height: 250px; /* Default height, adjust as needed */
+    width: 100%;
+    margin-top: 15px; /* Space below title/controls */
+  }
+  
+  .noDataMessage {
+      text-align: center;
+      color: var(--text-secondary);
+      margin-top: 25px;
+      font-style: italic;
+      padding: 15px;
+      background-color: var(--input-bg);
+      border-radius: 8px;
+      border: 1px dashed var(--card-border);
+      height: 150px; /* Give it some height */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  /* Add media queries if specific height adjustments are needed */
+  @media (max-width: 768px) {
+      .chartContainer {
+          height: 220px;
+      }
+  }
+  @media (max-width: 480px) {
+      .chartContainer {
+          height: 200px;
+      }
+  }
+  

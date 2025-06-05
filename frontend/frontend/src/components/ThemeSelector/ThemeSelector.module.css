@@ -1,0 +1,22 @@
+/* c:/Users/misba/OneDrive/Documents/workopoly1_proj/frontend/src/components/ThemeSelector/ThemeSelector.module.css */
+.themeSelectorContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.themeSelectorContainer label {
+  font-weight: bold;
+}
+
+.themeSelectorContainer select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: white; /* Adjust as needed for themes */
+}
+
+.upgradeMessage {
+  font-size: 0.9em;
+  color: #555; /* Adjust as needed for themes */
+}

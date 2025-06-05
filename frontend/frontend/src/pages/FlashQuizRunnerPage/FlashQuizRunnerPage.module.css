@@ -1,0 +1,53 @@
+/* frontend/src/pages/FlashQuizRunnerPage/FlashQuizRunnerPage.module.css */
+.runnerContainer {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 2rem auto;
+    background-color: var(--bg-main-content, #f4f7f6);
+    text-align: center;
+    border-radius: 8px;
+}
+
+.quizTitle {
+    font-size: 2.2rem;
+    color: var(--accent-cta);
+    margin-bottom: 1rem;
+}
+
+.quizDescription {
+    font-size: 1.1rem;
+    color: var(--text-secondary-light-bg);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.startButton {
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+    color: var(--text-on-gradient, #fff);
+    background-color: var(--accent-cta);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.startButton:hover {
+    background-color: var(--accent-cta-darker); /* Define this or use a darker hex */
+}
+
+.backButton {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--bg-card-secondary, #e9ecef); /* A light grey or secondary card bg */
+    color: var(--text-primary-light-bg);
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+
+.backButton:hover {
+    background-color: var(--accent-divider, #ced4da); /* A slightly darker grey */
+}

@@ -1,0 +1,136 @@
+/* src/pages/GamificationPage/GamificationPage.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Re-use fade-in animation if desired */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pageContainer {
+  padding: 40px 25px; /* Consistent padding */
+  /* Consistent background */
+  background: linear-gradient(145deg, #f0eaff 0%, #ffffff 100%);
+  min-height: calc(100vh - 60px); /* Adjust if navbar height differs */
+  font-family: 'Poppins', sans-serif;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+  box-sizing: border-box;
+}
+
+.pageTitle {
+  text-align: center;
+  color: #6A67CE;
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  font-weight: 700;
+  margin-bottom: 35px;
+}
+
+.sectionCard {
+  background-color: #ffffff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(227, 224, 243, 0.6);
+  margin-bottom: 30px;
+  border: 1px solid #e3e0f3;
+}
+
+.sectionTitle {
+  color: #8685ef; /* Main Purple */
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0eaff; /* Light divider */
+}
+
+.challengesList h3 {
+    color: #6A67CE; /* Dark Purple for sub-headings */
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+.challengesList h3:first-child {
+    margin-top: 0; /* Remove top margin for the first heading */
+}
+.weeklyTitle {
+    margin-top: 25px; /* More space before weekly */
+}
+
+.noItems {
+    font-style: italic;
+    color: #777;
+    text-align: center;
+    padding: 15px 0;
+}
+
+/* Center the XPBar within its section */
+.sectionCard > div[class*="XPBar_xpBarContainer"] { /* Target XPBar specifically */
+    max-width: 500px; /* Or adjust */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pageContainer {
+    padding: 30px 15px;
+  }
+  .pageTitle {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+  }
+  .sectionCard {
+    padding: 20px;
+  }
+  .sectionTitle {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+}
+/* src/pages/GamificationPage/GamificationPage.module.css */
+
+/* ... Keep existing styles ... */
+
+/* Styles for the Customize Link */
+.customizeLinkWrapper {
+  text-align: center; /* Center the button */
+  margin-top: 20px; /* Space above the button */
+  padding-top: 15px; /* Space above within the section */
+  border-top: 1px solid var(--card-border); /* Optional separator */
+}
+
+.customizeLink {
+display: inline-block; /* Allow padding and centering */
+padding: 10px 25px;
+font-size: 1rem;
+font-weight: 600;
+text-decoration: none;
+border-radius: 8px;
+/* Style similar to primary button */
+background-color: var(--button-primary-bg);
+color: var(--button-primary-text);
+box-shadow: 0 3px 8px var(--card-shadow);
+transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.customizeLink:hover {
+background-color: var(--button-primary-hover-bg);
+transform: translateY(-2px);
+box-shadow: 0 5px 12px var(--card-shadow);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+/* ... existing responsive styles ... */
+.customizeLinkWrapper {
+    margin-top: 15px;
+    padding-top: 10px;
+}
+.customizeLink {
+    font-size: 0.95rem;
+    padding: 8px 20px;
+}
+}

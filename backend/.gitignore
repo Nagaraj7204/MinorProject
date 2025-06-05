@@ -1,0 +1,22 @@
+# Node.js dependencies
+node_modules/
+
+# Environment variables
+# IMPORTANT: Never commit your .env file containing secrets!
+.env
+.env.*
+!.env.example # Optional: If you have an example env file, don't ignore it
+
+# Log files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output (if applicable, e.g., for TypeScript)
+# dist/
+
+# Operating System files
+.DS_Store
+Thumbs.db

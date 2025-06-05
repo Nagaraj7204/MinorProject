@@ -1,0 +1,288 @@
+/* src/components/AdminTaskManagement/AdminTaskManagement.module.css */
+.taskManagementContainer {
+    padding: 1.5rem 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    margin: 1rem;
+  }
+  
+  .pageTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .controlsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+  }
+  
+  .searchBox {
+    display: flex;
+    align-items: center;
+    background-color: #f9fafb;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    flex-grow: 1;
+    min-width: 250px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+  }
+  
+  .controlIcon {
+    color: #6b7280;
+    margin-right: 0.7rem;
+    flex-shrink: 0;
+  }
+  
+  .searchBox input {
+    border: none;
+    background: none;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+  }
+  .searchBox input::placeholder {
+      color: #9ca3af;
+  }
+  
+  .filterGroup {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+  }
+  
+  .filterBox {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: #f9fafb;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+  }
+  
+  .filterBox label {
+    font-size: 0.9rem;
+    color: #374151;
+    font-weight: 500;
+    margin: 0;
+    white-space: nowrap;
+  }
+  
+  .filterBox select,
+  .filterBox .dateInput { /* Style date inputs similarly */
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0.1rem 0.3rem;
+    color: #374151;
+    font-family: inherit; /* Ensure consistent font */
+  }
+  .filterBox .dateInput {
+      cursor: text;
+      padding: 0.1rem 0; /* Adjust date padding */
+  }
+  
+  .tableContainer {
+    overflow-x: auto;
+    width: 100%;
+  }
+  
+  .taskTable {
+    width: 100%;
+    min-width: 750px; /* Adjust min-width for task columns */
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  
+  .taskTable th,
+  .taskTable td {
+    padding: 0.9rem 1.1rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+    white-space: nowrap;
+  }
+  
+  .taskTable th {
+    background-color: #f9fafb;
+    font-weight: 600;
+    color: #374151;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  .taskTable tbody tr {
+      transition: background-color 0.15s ease-in-out;
+  }
+  
+  .taskTable tbody tr:hover {
+    background-color: #f3f4f6;
+  }
+  
+  /* Tag styles for status */
+  .tag {
+    display: inline-block;
+    padding: 0.25rem 0.7rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    line-height: 1.2;
+  }
+  
+  .tag.pending { background-color: #feefc7; color: #92400e; }
+  .tag.completed { background-color: #d1fae5; color: #065f46; }
+  /* Add other statuses if needed */
+  
+  .actionButtonsCell {
+      /* Styles for the cell containing buttons */
+  }
+  
+  .actionButtons {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+  }
+  
+  .actionButton {
+    background: none;
+    border: 1px solid transparent;
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    white-space: nowrap;
+  }
+  
+  .actionButton svg {
+      width: 14px;
+      height: 14px;
+  }
+  
+  .actionText {
+      /* Hide text on smaller screens if needed */
+  }
+  
+  .actionButton:hover {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .completeButton { color: #10b981; border-color: #a7f3d0; } /* Emerald */
+  .completeButton:hover { background-color: #d1fae5; }
+
+  .pendingButton { color: #f59e0b; border-color: #fde68a; } /* Amber - similar to a warning or attention state */
+  .pendingButton:hover { background-color: #fef3c7; }
+  
+  .deleteButton { color: #ef4444; border-color: #fecaca; } /* Red */
+  .deleteButton:hover { background-color: #fee2e2; }
+  
+  .noResults {
+      text-align: center;
+      padding: 2rem;
+      color: #6b7280;
+      font-style: italic;
+  }
+  
+  /* Responsive Table Styles */
+  @media (max-width: 992px) {
+      .taskTable th:nth-child(5), /* Hide Created At */
+      .taskTable td:nth-child(5) {
+          display: none;
+      }
+  }
+  
+  @media (max-width: 768px) {
+      .taskManagementContainer {
+          margin: 0.5rem;
+          padding: 1rem;
+      }
+      .controlsContainer {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 1rem;
+      }
+      .searchBox, .filterGroup, .filterBox {
+          min-width: 0;
+          width: 100%;
+      }
+      .taskTable {
+          min-width: 0;
+          display: block;
+          width: 100% !important;
+      }
+      .taskTable thead {
+          display: none;
+      }
+      .taskTable tbody, .taskTable tr, .taskTable td {
+          display: block;
+          width: 100% !important;
+          text-align: right;
+          padding-left: 50%;
+          position: relative;
+          white-space: normal;
+      }
+      .taskTable td::before {
+          content: attr(data-label);
+          position: absolute;
+          left: 10px;
+          width: calc(50% - 20px);
+          padding-right: 10px;
+          font-weight: 600;
+          text-align: left;
+          color: #374151;
+          white-space: nowrap;
+      }
+      .taskTable tr {
+          margin-bottom: 1rem;
+          border: 1px solid #e5e7eb;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      }
+      .taskTable td {
+          border-bottom: 1px dashed #eee;
+      }
+      .taskTable td:last-child {
+          border-bottom: none;
+      }
+      .actionButtonsCell {
+          text-align: right;
+          padding-left: 10px !important;
+      }
+       .actionButtonsCell::before {
+          display: none;
+      }
+      .actionButtons {
+          justify-content: flex-end;
+          gap: 0.5rem;
+      }
+      .actionText {
+          display: none;
+      }
+      .actionButton {
+          padding: 0.5rem;
+      }
+  }

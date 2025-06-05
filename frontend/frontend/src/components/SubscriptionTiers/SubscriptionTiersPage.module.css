@@ -1,0 +1,416 @@
+/* c:/Users/misba/OneDrive/Documents/workopoly1_proj/frontend/src/components/SubscriptionTiers/SubscriptionTiersPage.module.css */
+/* Assumes CSS variables from Home.module.css (or a global scope) are available */
+
+/* --- Color Variables (Re-iterating for clarity) --- */
+/* :root { */ /* Original :root variables can be kept for reference or as fallbacks */
+  /* Core colors (Task Manager Theme from Home.module.css) */
+  --bg-section: #354a54;
+  --bg-card: #ffffff;
+  --bg-header-footer: #354a54;
+
+  --text-primary-dark-bg: #f0f0f0;
+  --text-secondary-dark-bg: #81b2c9;
+
+  --text-primary-light-bg: #1f1a18;
+  --text-secondary-light-bg: #4b5563;
+  --text-on-gradient: #f0f0f0;
+
+  /* Accent colors (Task Manager Theme) */
+  --accent-cta: #3c157b; /* Violet */
+  --accent-highlight: #3c157b; /* Violet */
+  --accent-interactive: #1b81a1; /* Teal */
+  --accent-divider: #81b2c9; /* Sky Blue */
+
+  /* Standard UI Elements */
+  --card-border-color: #e0e0e0;
+  --card-shadow-color: rgba(0, 0, 0, 0.06); /* Softer shadow */
+  --card-shadow-hover-color: rgba(0, 0, 0, 0.12);
+
+  --color-success: #28a745;
+  --color-success-hover: #218838;
+  --color-success-bg-light: #f0fdf4;
+  --color-success-border: #a7d7b5;
+  --color-success-text: #155724;
+  --color-error: #dc3545;
+  --color-error-hover: #c82333;
+  --color-error-bg-light: #fef2f2;
+  --color-error-border: #fecaca;
+  --color-error-text: #b91c1c;
+
+  --font-primary: 'Poppins', sans-serif; /* Assuming Poppins is primary */
+  --font-secondary: 'Inter', sans-serif;
+  --transition-fast: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-medium: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  /* Tier Specific Colors */
+  --tier-default-color: var(--accent-divider); /* Sky Blue for default/base */
+  --tier-silver-color: var(--accent-interactive); /* Teal for Silver */
+  --tier-gold-color: var(--accent-highlight);   /* Violet for Gold */
+  --tier-diamond-color: linear-gradient(135deg, var(--accent-interactive), var(--accent-cta)); /* Gradient for Diamond */
+
+  --button-disabled-bg: #adb5bd;
+  --button-disabled-text: #6c757d;
+/* } */
+
+/* --- Theme Variables --- */
+:root, [data-theme='light'] {
+  --theme-page-background: #f4f7f9; /* Light page background */
+  --theme-page-text-primary: var(--text-primary-light-bg, #1f1a18);
+  --theme-page-text-secondary: var(--text-secondary-light-bg, #4b5563);
+  --theme-card-background: var(--bg-card, #ffffff);
+  --theme-card-border: var(--card-border-color, #e0e0e0);
+  --theme-card-shadow: var(--card-shadow-color, rgba(0, 0, 0, 0.06));
+  --theme-card-shadow-hover: var(--card-shadow-hover-color, rgba(0, 0, 0, 0.12));
+  --theme-button-primary-bg: var(--accent-cta, #3c157b); /* Violet */
+  --theme-button-primary-text: var(--text-primary-dark-bg, #f0f0f0); /* Light text */
+  --theme-button-primary-hover-bg: #2a0f5b; /* Darker Violet */
+  --theme-button-disabled-bg: var(--button-disabled-bg, #adb5bd);
+  --theme-button-disabled-text: var(--button-disabled-text, #6c757d);
+  --theme-accent-cta: var(--accent-cta, #3c157b);
+  --theme-accent-interactive: var(--accent-interactive, #1b81a1);
+  --theme-success-text: var(--color-success-text, #155724);
+  --theme-success-bg-light: var(--color-success-bg-light, #f0fdf4);
+  --theme-success-border: var(--color-success-border, #a7d7b5);
+  --theme-error-text: var(--color-error-text, #b91c1c);
+  --theme-error-bg-light: var(--color-error-bg-light, #fef2f2);
+  --theme-error-border: var(--color-error-border, #fecaca);
+}
+
+[data-theme='dark'] {
+  --theme-page-background: #1a202c; /* Darker gray-blue */
+  --theme-page-text-primary: #e2e8f0; /* Light gray */
+  --theme-page-text-secondary: #a0aec0; /* Medium gray */
+  --theme-card-background: #2d3748; /* Dark gray-blue */
+  --theme-card-border: #4a5568;
+  --theme-card-shadow: rgba(0, 0, 0, 0.2);
+  --theme-card-shadow-hover: rgba(0, 0, 0, 0.3);
+  --theme-button-primary-bg: var(--accent-interactive, #1b81a1); /* Teal for dark mode */
+  --theme-button-primary-text: #ffffff;
+  --theme-button-primary-hover-bg: #135e74; /* Darker Teal */
+  --theme-button-disabled-bg: #4a5568;
+  --theme-button-disabled-text: #a0aec0;
+  --theme-accent-cta: #5a3e9b; /* Slightly lighter violet for dark */
+  --theme-accent-interactive: #2db3d6; /* Lighter teal for dark */
+  --theme-success-text: #c6f6d5;
+  --theme-success-bg-light: #2f855a;
+  --theme-success-border: #38a169;
+  --theme-error-text: #fecaca;
+  --theme-error-bg-light: #c53030;
+  --theme-error-border: #e53e3e;
+}
+
+[data-theme='soft-pastel'] {
+  --theme-page-background: #fff0f5; /* Lavender blush */
+  --theme-page-text-primary: #5d54a4; /* Dark pastel purple */
+  --theme-page-text-secondary: #8c7aa8; /* Muted pastel purple */
+  --theme-card-background: #ffffff; /* White cards */
+  --theme-card-border: #e6e0f0; /* Light pastel purple border */
+  --theme-card-shadow: rgba(93, 84, 164, 0.1);
+  --theme-card-shadow-hover: rgba(93, 84, 164, 0.15);
+  --theme-button-primary-bg: #b39ddb; /* Soft purple */
+  --theme-button-primary-text: #ffffff;
+  --theme-button-primary-hover-bg: #9e86c9; /* Darker soft purple */
+  --theme-button-disabled-bg: #d1c4e9;
+  --theme-button-disabled-text: #7e57c2;
+  --theme-accent-cta: #ab87ff; /* Pastel violet */
+  --theme-accent-interactive: #7fc2d4; /* Pastel teal */
+  --theme-success-text: #347755;
+  --theme-success-bg-light: #e6ffed;
+  --theme-success-border: #a7d7b5;
+  --theme-error-text: #9b3b45;
+  --theme-error-bg-light: #ffebee;
+  --theme-error-border: #fecaca;
+}
+
+
+.tiersPageContainer {
+  padding: 2rem;
+  max-width: 1400px; /* Increased max-width to better accommodate 4 cards */
+  margin: 2rem auto; /* Add top/bottom margin */
+  font-family: var(--font-primary);
+  background-color: var(--theme-page-background);
+  color: var(--theme-page-text-primary);
+  border-radius: 12px;
+  box-shadow: 0 8px 30px var(--theme-card-shadow); /* Use themed shadow */
+}
+
+.pageTitle {
+  text-align: center;
+  color: var(--theme-accent-cta); /* Use themed accent */
+  margin-bottom: 2.5rem; /* Increased margin */
+  font-size: 2.25rem; /* Consistent H1 */
+  font-weight: 700;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--theme-card-border);
+}
+
+.currentUserInfo {
+  text-align: center;
+  margin-bottom: 3rem; /* Increased margin */
+  padding: 1.5rem 2rem; /* Increased padding */
+  background-color: var(--theme-card-background);
+  border-radius: 12px; /* Softer radius */
+  box-shadow: 0 6px 20px var(--theme-card-shadow);
+  border: 1px solid var(--theme-card-border);
+}
+
+.currentUserInfo p {
+  margin: 0.6rem 0; /* Adjusted margin */
+  font-size: 1.15rem; /* Slightly larger */
+  color: var(--theme-page-text-secondary);
+}
+
+.currentTierText {
+  font-weight: 700; /* Bolder */
+  color: var(--theme-accent-interactive); /* Use themed accent */
+}
+.currentPointsText {
+  font-weight: 700; /* Bolder */
+  color: var(--theme-accent-cta); /* Use themed accent */
+}
+
+
+.tiersGrid {
+  display: grid;
+  /* Adjusted minmax to allow 4 cards to fit more comfortably within 1400px */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  gap: 2.5rem; /* Increased gap */
+  align-items: stretch; /* Ensure cards in the same row stretch to the same height if content differs */
+}
+
+.tierCard {
+  background-color: var(--theme-card-background);
+  border-radius: 12px; /* Consistent radius */
+  padding: 2.5rem; /* Increased padding */
+  box-shadow: 0 8px 25px var(--theme-card-shadow);
+  text-align: center;
+  transition: var(--transition-medium);
+  border-top-width: 6px; /* More prominent top border */
+  border-top-style: solid;
+  border-left: 1px solid var(--theme-card-border);
+  border-right: 1px solid var(--theme-card-border);
+  border-bottom: 1px solid var(--theme-card-border);
+  display: flex;
+  justify-content: space-between; /* Pushes button to bottom if rewards list is short */
+  flex-direction: column; /* To align button at bottom */
+}
+
+.tierCard:hover {
+  transform: translateY(-10px); /* More pronounced hover */
+  box-shadow: 0 12px 35px var(--theme-card-shadow-hover);
+  border-color: var(--theme-accent-interactive); /* Use themed accent for hover border */
+}
+
+/* Tier-specific top border colors using CSS Variables */
+.tierCard.default { border-top-color: var(--tier-default-color); } /* Example for a base/free tier */
+.tierCard.silver { border-top-color: var(--tier-silver-color); }
+.tierCard.gold { border-top-color: var(--tier-gold-color); }
+.tierCard.diamond {
+  border-top-image: var(--tier-diamond-color); /* Apply gradient to border */
+  border-top-style: solid; /* Ensure border style is solid for gradient */
+}
+
+
+.tierIcon {
+  font-size: 3.5rem; /* Larger icon */
+  margin-bottom: 1.5rem;
+  /* Color can be inherited or set specifically per tier if desired */
+  /* e.g., .tierCard.silver .tierIcon { color: var(--tier-silver-color); } */
+  color: var(--theme-accent-interactive); /* Use themed accent */
+  transition: transform var(--transition-fast);
+}
+.tierCard:hover .tierIcon {
+  transform: scale(1.1);
+}
+.tierCard.silver .tierIcon { color: var(--tier-silver-color); }
+.tierCard.gold .tierIcon { color: var(--tier-gold-color); }
+.tierCard.diamond .tierIcon { color: var(--tier-diamond-color); }
+
+
+.tierName {
+  font-size: 1.75rem; /* Slightly larger */
+  font-weight: 700; /* Bolder */
+  margin-bottom: 0.75rem;
+  color: var(--theme-page-text-primary);
+}
+
+.tierPoints {
+  font-size: 1rem;
+  color: var(--theme-page-text-secondary);
+  margin-bottom: 2rem; /* Increased margin */
+}
+.tierPoints strong {
+  color: var(--theme-accent-cta); /* Use themed accent */
+  font-weight: 700;
+}
+
+.tierRewards {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2.5rem; /* Increased margin */
+  text-align: left;
+  flex-grow: 1; /* Allow rewards list to take space */
+}
+
+.tierRewards li {
+  margin-bottom: 0.85rem; /* Adjusted margin */
+  color: var(--theme-page-text-secondary);
+  font-size: 1rem; /* Slightly larger */
+  padding-left: 2em; /* Increased padding for icon */
+  position: relative;
+  line-height: 1.5;
+}
+
+.tierRewards li::before {
+  content: '✓';
+  color: var(--theme-success-text); /* Use themed success color */
+  position: absolute;
+  left: 0.25em; /* Adjusted position */
+  font-weight: bold;
+  font-size: 1.1em; /* Slightly larger checkmark */
+}
+
+/* Button Styling (using established patterns) */
+.button { /* Base button style - can be composed */
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  transition: var(--transition-fast);
+  text-align: center;
+  display: inline-block;
+  width: 100%; /* Default to full width within its container */
+  max-width: 280px; /* Max width for the button */
+  margin: 0 auto; /* Center the button */
+}
+
+.upgradeButton {
+  composes: button;
+  background-color: var(--theme-button-primary-bg);
+  color: var(--theme-button-primary-text);
+  box-shadow: 0 4px 12px var(--theme-card-shadow); /* Use themed shadow */
+  margin-top: auto; /* Pushes button to bottom of flex container */
+}
+
+.upgradeButton:hover:not(:disabled) {
+  background-color: var(--theme-button-primary-hover-bg);
+  transform: translateY(-2px) scale(1.02); /* Subtle scale */
+  /* box-shadow: 0 6px 15px rgba(126, 42, 124, 0.25); Original shadow, can be themed if needed */
+  box-shadow: 0 6px 18px var(--theme-card-shadow-hover); /* Use themed shadow */
+}
+
+.upgradeButton:disabled {
+  background-color: var(--theme-button-disabled-bg);
+  color: var(--theme-button-disabled-text);
+  cursor: not-allowed;
+  opacity: 0.7;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Message Styles (using established patterns) */
+.message {
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem; /* Consistent margin */
+  font-size: 0.95rem;
+  border-width: 1px;
+  border-style: solid;
+  text-align: center;
+}
+
+.errorMessage {
+  composes: message;
+  color: var(--theme-error-text);
+  background-color: var(--theme-error-bg-light);
+  border-color: var(--theme-error-border);
+}
+
+.successMessage {
+  composes: message;
+  color: var(--theme-success-text);
+  background-color: var(--theme-success-bg-light);
+  border-color: var(--theme-success-border);
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 250px; /* Increased height */
+  font-size: 1.25rem; /* Slightly larger */
+  color: var(--theme-page-text-secondary);
+  padding: 2rem;
+}
+.loadingContainer .icon { /* If you add a spinner icon */
+  margin-right: 0.75rem;
+  font-size: 1.5em;
+  animation: spin 1s linear infinite; /* Example spin animation */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .tiersGrid {
+    /* For tablets, maybe 2 columns is better */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Or explicitly 2 if auto-fit isn't behaving */
+  }
+}
+
+@media (max-width: 768px) {
+  .tiersPageContainer {
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+  }
+  .pageTitle {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  .currentUserInfo {
+    padding: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+  .currentUserInfo p {
+    font-size: 1.05rem;
+  }
+  .tierCard {
+    padding: 2rem;
+  }
+  .tierName {
+    font-size: 1.6rem;
+  }
+  .tierIcon {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tiersPageContainer {
+    padding: 1rem;
+    margin: 1rem auto;
+    border-radius: 0; /* Full width on very small screens */
+  }
+  .pageTitle {
+    font-size: 1.8rem; /* Slightly larger for better readability */
+  }
+  .tiersGrid {
+    grid-template-columns: 1fr; /* Single column */
+    gap: 2rem;
+  }
+  .tierCard {
+    padding: 1.5rem;
+  }
+  .tierName {
+    font-size: 1.6rem; /* Slightly larger */
+  }
+  .upgradeButton {
+    font-size: 0.95rem;
+    padding: 0.7rem 1.2rem;
+  }
+}

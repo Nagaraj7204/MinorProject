@@ -1,0 +1,135 @@
+/* frontend/src/pages/QuizLevelSelectionPage/QuizLevelSelectionPage.module.css */
+.levelSelectionContainer {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.pageTitle {
+  font-size: 2.2rem;
+  color: var(--accent-cta);
+  margin-bottom: 0.5rem;
+}
+
+.instructions {
+  font-size: 1.1rem;
+  color: var(--text-secondary-light-bg);
+  margin-bottom: 2rem;
+}
+
+.levelsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1.5rem;
+}
+
+.levelCard {
+  background-color: var(--bg-card);
+  border: 1px solid var(--accent-divider);
+  border-radius: 8px;
+  padding: 1.5rem 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  position: relative;
+}
+
+.levelCard:hover:not(:disabled) {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.levelCard.locked {
+  background-color: #f8f9fa;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.levelCard.completed {
+  border-left: 5px solid var(--color-success, green); /* Or your success color */
+}
+
+
+.levelNumber {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--accent-interactive);
+  margin-bottom: 0.5rem;
+}
+
+.levelStatusIcon {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.levelCard.locked .levelStatusIcon {
+  color: #6c757d; /* Muted color for locked icon */
+}
+
+.levelCard:not(.locked) .levelStatusIcon {
+  color: var(--color-success, green); /* Unlocked icon color */
+}
+
+.completedText, .lockedText {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+.completedText {
+  color: var(--color-success-dark, darkgreen);
+}
+.lockedText {
+  color: #dc3545; /* Red for locked text */
+}
+
+
+.backToGamesButton {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--bg-card-secondary, #e9ecef);
+  color: var(--text-primary-light-bg);
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.backToGamesButton:hover {
+  background-color: var(--accent-divider, #ced4da);
+}
+
+.masteredContainer {
+  margin-top: 3rem;
+  padding: 2rem;
+  background-color: var(--color-success-bg-light, #d4edda);
+  border: 1px solid var(--color-success-border, #c3e6cb);
+  border-radius: 8px;
+}
+.masteredContainer h2 {
+  color: var(--color-success-dark, darkgreen);
+  margin-bottom: 0.5rem;
+}
+.teaserText {
+  font-style: italic;
+  color: var(--text-secondary-light-bg);
+}
+/* c:/Users/misba/OneDrive/Documents/workopoly1_proj/frontend/src/pages/QuizLevelSelectionPage/QuizLevelSelectionPage.module.css */
+/* ... other styles ... */
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px; /* Adjust as needed */
+  font-size: 1.2rem;
+  color: var(--text-secondary-light-bg);
+}

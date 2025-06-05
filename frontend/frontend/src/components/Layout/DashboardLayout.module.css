@@ -1,0 +1,23 @@
+/* src/components/Layout/DashboardLayout.module.css */
+.dashboardLayout {
+    display: flex;
+    min-height: 100vh; /* Ensure layout takes full viewport height */
+    background-color: #f4f7fc; /* Light background for the content area */
+  }
+  
+  .dashboardContent {
+    flex-grow: 1; /* Allows content area to take remaining space */
+    padding: 2rem; /* Add some padding around the content */
+    overflow-y: auto; /* Allow content to scroll if it overflows */
+  }
+  
+  /* Example media query for responsiveness */
+  @media (max-width: 768px) {
+    .dashboardLayout {
+      flex-direction: column; /* Stack sidebar and content on smaller screens */
+    }
+    .dashboardContent {
+      padding: 1rem;
+    }
+  }
+  

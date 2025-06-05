@@ -1,0 +1,245 @@
+/* FlashQuizGame.module.css */
+
+.quizContainer {
+    background-color: var(--clr-bg-card, #F1F2F6); /* Using your theme's card background */
+    padding: 25px 30px; /* Increased padding */
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12); /* Softer, more diffused shadow */
+    max-width: 650px; /* Slightly wider */
+    margin: 30px auto;
+    font-family: var(--font-primary, 'Inter', sans-serif); /* Using Inter as a modern default */
+    color: var(--clr-text-primary, #333);
+    border-top: 5px solid var(--clr-primary, #5C6BC0); /* Accent border on top */
+}
+
+.quizHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.quizContainer h2 {
+    color: var(--clr-primary, #5C6BC0);
+    text-align: left; /* Align to left for header layout */
+    margin-bottom: 0; /* Removed bottom margin as it's part of header */
+    font-weight: 700; /* Bolder */
+    font-size: 1.6rem; /* Larger heading */
+}
+
+.timerDisplay {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.2rem; /* Larger timer text */
+    color: var(--clr-accent, #FF6F61); /* Use accent color for timer */
+    font-weight: 600;
+    background-color: rgba(255, 111, 97, 0.1); /* Light accent background */
+    padding: 5px 10px;
+    border-radius: 20px; /* Pill shape */
+}
+
+.clockIcon {
+    font-size: 1.1rem; /* Slightly smaller icon to fit pill */
+}
+
+.categoryText {
+    font-size: 0.95rem;
+    color: var(--clr-text-muted, #777C85);
+    text-align: center;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.questionText {
+    font-size: 1.3rem; /* Larger question text */
+    margin-bottom: 25px; /* More space below question */
+    line-height: 1.7; /* Improved line height */
+    text-align: center;
+    font-weight: 500; /* Slightly bolder question */
+    color: var(--clr-text-primary);
+}
+
+.optionsContainer {
+    display: grid; /* Using grid for better alignment if needed */
+    grid-template-columns: 1fr; /* Single column for now, can be 1fr 1fr for two columns */
+    gap: 12px; /* Slightly increased gap */
+    margin-bottom: 25px;
+}
+
+.optionButton {
+    padding: 15px 20px; /* Increased padding */
+    border: 2px solid transparent; /* Transparent border initially */
+    border-radius: 8px; /* Slightly more rounded */
+    background-color: var(--clr-bg-main, #FAFAFA);
+    color: var(--clr-text-primary, #333);
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+    text-align: left;
+    font-size: 1.05rem; /* Consistent font size */
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow for depth */
+}
+
+.optionButton:hover:not(:disabled) {
+    background-color: var(--clr-secondary-bg-accent, #E0F7FA);
+    border-color: var(--clr-primary, #5C6BC0);
+    transform: translateY(-2px) scale(1.01); /* More noticeable hover */
+    box-shadow: 0 5px 10px rgba(92, 107, 192, 0.15); /* Shadow with primary color hint */
+}
+
+.optionButton.selected {
+    background-color: var(--clr-primary, #5C6BC0);
+    border-color: var(--clr-primary, #5C6BC0);
+    color: var(--clr-text-on-accent, #FFFFFF);
+    font-weight: 600; /* Bolder selected option */
+    box-shadow: 0 4px 12px rgba(92, 107, 192, 0.25);
+}
+
+.optionButton.correct {
+    background-color: var(--clr-success, #81C784);
+    border-color: var(--clr-success, #81C784);
+    color: var(--clr-text-on-accent, #FFFFFF);
+    animation: pulseCorrect 0.6s ease-out;
+}
+
+.optionButton.incorrect {
+    background-color: var(--clr-accent, #FF6F61);
+    border-color: var(--clr-accent, #FF6F61);
+    color: var(--clr-text-on-accent, #FFFFFF);
+    animation: shakeIncorrect 0.5s ease-out;
+}
+
+@keyframes pulseCorrect {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shakeIncorrect {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+
+.optionButton:disabled {
+    cursor: not-allowed;
+    opacity: 0.8; /* Slightly less opaque when disabled */
+    transform: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Keep subtle shadow even when disabled */
+}
+
+.submitButton,
+.nextButton {
+    display: block;
+    width: 100%;
+    padding: 14px 20px; /* Increased padding */
+    background: linear-gradient(135deg, var(--clr-primary), var(--clr-accent)); /* Gradient button */
+    color: var(--clr-text-on-accent, #FFFFFF);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem; /* Larger font */
+    font-weight: 600; /* Bolder button text */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.submitButton:hover:not(:disabled),
+.nextButton:hover:not(:disabled) {
+    background-size: 150% 150%; /* For gradient animation on hover if desired */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.submitButton:disabled {
+    background: #ccc; /* Simpler disabled state */
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.score {
+    text-align: right;
+    font-weight: 700; /* Bolder score */
+    margin-top: 20px;
+    font-size: 1.2rem; /* Larger score text */
+    color: var(--clr-primary, #5C6BC0);
+}
+
+.questionCounter {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--clr-text-muted);
+    margin-top: 10px;
+}
+
+.loadingText, .errorContainer p, .warningText {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.1rem;
+}
+.warningText {
+    color: var(--clr-warning, #FFD54F);
+    background-color: rgba(255, 213, 79, 0.1);
+    border-left: 4px solid var(--clr-warning, #FFD54F);
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+.errorContainer p {
+    color: var(--clr-accent, #FF6F61);
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.submitMessage {
+    padding: 10px 15px;
+    margin-top: 15px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 500;
+}
+.submitMessage.success {
+    background-color: var(--clr-success-light, #d4edda); /* Define if not already */
+    color: var(--clr-success-dark, #155724); /* Define if not already */
+    border: 1px solid var(--clr-success, #81C784);
+}
+.submitMessage.error {
+    background-color: var(--clr-accent-light, #f8d7da); /* Define if not already */
+    color: var(--clr-accent-dark, #721c24); /* Define if not already */
+    border: 1px solid var(--clr-accent, #FF6F61);
+}
+.submitMessage.info {
+    background-color: var(--clr-secondary-bg-accent, #E0F7FA);
+    color: var(--clr-primary, #5C6BC0);
+    border: 1px solid var(--clr-primary-light, #a8b5e9); /* Define if not already */
+}
+
+
+.nextLevelMessage {
+  color: var(--clr-success, #81C784);
+  font-weight: 700;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.masteredMessage {
+  color: var(--clr-primary, #5C6BC0);
+  font-style: italic;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}

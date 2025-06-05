@@ -1,0 +1,140 @@
+/* src/components/GamificationPage/GamificationPage.module.css */
+.gamificationContainer {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px 40px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    color: #333;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #eee;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    font-weight: 600;
+    color: #8685ef; /* Primary theme color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.headerIcon {
+    color: #ffc107; /* Gold color for trophy */
+}
+
+.subtitle {
+    font-size: 1.1em;
+    color: #666;
+}
+
+.featureSection {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    padding: 20px 0;
+}
+
+/* Alternate layout for visual variety */
+.reverseLayout {
+    flex-direction: row-reverse;
+}
+
+.featureIconContainer {
+    flex-shrink: 0;
+    background-color: #f0f0f8; /* Light background for icon */
+    padding: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.featureIcon {
+    font-size: 2.5em; /* Adjust icon size */
+    color: #8685ef; /* Match header color or use unique colors */
+}
+
+/* Example: Unique icon colors */
+.featureSection:nth-of-type(2) .featureIcon { color: #28a745; } /* Points/Star */
+.featureSection:nth-of-type(3) .featureIcon { color: #17a2b8; } /* Level Up */
+.featureSection:nth-of-type(4) .featureIcon { color: #ffc107; } /* Badges/Trophy */
+.featureSection:nth-of-type(5) .featureIcon { color: #fd7e14; } /* Leaderboard/Chart */
+
+
+.featureContent h2 {
+    font-size: 1.6em;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.featureContent p {
+    font-size: 1em;
+    line-height: 1.7;
+    color: #555;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+    font-size: 1.1em;
+    color: #666;
+}
+
+.footer a {
+    color: #8685ef;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .gamificationContainer {
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .header h1 {
+        font-size: 2em;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .featureSection,
+    .reverseLayout {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .featureIconContainer {
+        margin-bottom: 10px;
+        padding: 20px;
+    }
+
+    .featureIcon {
+        font-size: 2em;
+    }
+
+    .featureContent h2 {
+        font-size: 1.4em;
+    }
+}

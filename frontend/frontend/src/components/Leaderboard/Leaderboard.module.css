@@ -1,0 +1,347 @@
+/* src/components/Leaderboard/Leaderboard.module.css */
+/* Assumes CSS variables from Home.module.css (or a global scope) are available */
+
+/* --- Color Variables (Re-iterating for clarity if this file were standalone) --- */
+:root {
+  --color-success: #28a745;
+  --color-error: #dc3545;
+  --bg-white: #ffffff;
+  --bg-off-white: #f8f9fd;
+  --text-dark: #1f2937;
+  --text-muted: #4b5563;
+  --accent-interactive: #7e2a7c;
+  --accent-purple: #5f1461;
+  --accent-deep-purple: #381155;
+  --accent-bright-pink: #d04594;
+  --accent-highlight: #fde7f3; /* Light pink highlight */
+  --accent-highlight-blue: #e6f7ff; /* Light blue for current user */
+  --accent-highlight-blue-text: #0056b3;
+  --accent-highlight-blue-border: #91d5ff;
+
+  --card-border-light: rgba(0, 0, 0, 0.08);
+  --card-shadow-light: rgba(0, 0, 0, 0.07);
+  --card-shadow-hover-light: rgba(0, 0, 0, 0.12);
+  --input-border-color: #d1d5db;
+  --transition-fast: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-medium: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  --color-gold: #ffc107;
+  --color-gold-darker: #e0a800;
+}
+
+.leaderboardPage {
+  padding: 2rem;
+  background-color: var(--bg-off-white);
+  color: var(--text-dark);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  min-height: 100vh;
+}
+
+.leaderboardPage h1 {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--card-border-light);
+  color: var(--accent-deep-purple);
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+
+.leaderboardFilters {
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 0.75rem; /* Increased gap */
+  flex-wrap: wrap;
+}
+
+.leaderboardFilters button {
+  padding: 0.6rem 1.2rem; /* Slightly larger padding */
+  border: 1px solid var(--input-border-color);
+  background-color: var(--bg-white);
+  color: var(--text-muted);
+  border-radius: 8px; /* Consistent radius */
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.leaderboardFilters button:hover {
+  background-color: var(--accent-highlight);
+  border-color: var(--accent-pink);
+  color: var(--accent-purple);
+}
+
+.leaderboardFilters button.active {
+  background-color: var(--accent-interactive);
+  color: var(--bg-white);
+  border-color: var(--accent-interactive);
+  font-weight: 600;
+  box-shadow: 0 3px 8px rgba(126, 42, 124, 0.2);
+}
+
+.currentUserHighlight { /* Base for both in-table and outside */
+  background-color: var(--accent-highlight-blue);
+  color: var(--accent-highlight-blue-text);
+  font-weight: 600; /* Bolder */
+}
+
+.currentUserHighlight.outsideList {
+  padding: 1rem 1.5rem; /* Increased padding */
+  border-radius: 8px; /* Consistent radius */
+  margin-bottom: 2rem;
+  border: 1px solid var(--accent-highlight-blue-border);
+  box-shadow: 0 4px 10px rgba(145, 213, 255, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.currentUserHighlight.outsideList strong {
+  color: var(--accent-purple);
+}
+
+.leaderboardTableContainer { /* Wrapper for potential horizontal scroll on small screens */
+  overflow-x: auto;
+  width: 100%;
+}
+
+.leaderboardTable {
+  width: 100%;
+  border-collapse: separate; /* Allows border-radius on table */
+  border-spacing: 0;
+  margin-top: 1.5rem;
+  background-color: var(--bg-white);
+  box-shadow: 0 6px 20px var(--card-shadow-light);
+  border-radius: 12px; /* Softer radius */
+  overflow: hidden; /* Clip corners */
+  border: 1px solid var(--card-border-light);
+}
+
+.leaderboardTable th,
+.leaderboardTable td {
+  padding: 1rem 1.25rem; /* Increased padding */
+  text-align: left;
+  border-bottom: 1px solid var(--card-border-light);
+  vertical-align: middle; /* Align content vertically */
+}
+
+.leaderboardTable th {
+  background-color: var(--bg-off-white); /* Lighter header */
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  text-transform: uppercase; /* Optional: for a more formal look */
+  letter-spacing: 0.5px;
+}
+.leaderboardTable th:first-child { border-top-left-radius: 11px; } /* Match table radius */
+.leaderboardTable th:last-child { border-top-right-radius: 11px; }
+
+.leaderboardTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.leaderboardTable tbody tr:hover {
+  background-color: var(--accent-highlight); /* Subtle pink hover */
+}
+
+/* Highlight current user row */
+.leaderboardTable tbody tr.currentUserHighlight {
+  background-color: var(--accent-highlight-blue); /* Uses the defined variable */
+  /* font-weight is already set by .currentUserHighlight */
+}
+.leaderboardTable tbody tr.currentUserHighlight:hover {
+  background-color: #d4effc; /* Slightly darker blue on hover */
+}
+.leaderboardTable tbody tr.currentUserHighlight td {
+  color: var(--accent-highlight-blue-text);
+}
+
+
+.leaderboardTable td.rankCell { /* Rank column */
+  font-weight: 700;
+  width: 70px; /* Adjusted width */
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--accent-purple);
+}
+.leaderboardTable tr.currentUserHighlight td.rankCell {
+  color: var(--accent-deep-purple); /* Make rank more prominent for current user */
+}
+
+/* Username Cell Styling */
+.usernameCell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Adjust gap as needed for icon, text, badge, etc. */
+}
+
+.profileIcon {
+  width: 36px; /* Slightly larger */
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--bg-off-white); /* Subtle border */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.defaultIcon {
+  color: var(--input-border-color); /* Softer default icon color */
+  font-size: 36px; /* Match size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: var(--bg-off-white);
+  border-radius: 50%;
+}
+
+.usernameText {
+  flex-grow: 1;
+  /* margin-left: 8px; /* No longer needed if using gap on parent */
+  /* margin-right: 8px; /* No longer needed if using gap on parent */
+  font-weight: 500;
+  color: var(--text-dark);
+}
+.leaderboardTable tr.currentUserHighlight .usernameText {
+  font-weight: 700;
+}
+
+.unlockedIcon {
+  color: var(--color-gold);
+  font-size: 0.9em; /* Slightly larger */
+  cursor: help; 
+  /* margin-left: 0.25rem; /* No longer needed if using gap on parent */
+  transition: color var(--transition-fast);
+}
+.unlockedIcon:hover {
+  color: var(--color-gold-darker);
+}
+
+/* Level & Badges Cell Styling (Optional: specific alignment/styling) */
+.levelCell {
+  text-align: center;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+.leaderboardTable tr.currentUserHighlight .levelCell {
+  color: var(--accent-highlight-blue-text);
+  font-weight: 600;
+}
+.badgesCell {
+  font-size: 1.2em; /* Make badges/emojis slightly larger */
+  text-align: center; /* Optional: center badges */
+  letter-spacing: 0.1em; /* Space out emojis if multiple */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .leaderboardPage {
+    padding: 1.5rem;
+  }
+  .leaderboardPage h1 {
+    font-size: 1.8rem;
+  }
+  .leaderboardFilters {
+    gap: 0.5rem;
+  }
+  .leaderboardFilters button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  .leaderboardTable th,
+  .leaderboardTable td {
+    padding: 0.8rem 0.75rem; /* Reduce padding on smaller screens */
+    font-size: 0.9rem; /* Adjust font size for table content */
+  }
+  .profileIcon, .defaultIcon {
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+  }
+  .usernameCell {
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .leaderboardPage {
+    padding: 1rem;
+  }
+  .leaderboardPage h1 {
+    font-size: 1.6rem;
+  }
+  .leaderboardFilters {
+    flex-direction: column; /* Stack filters on very small screens */
+    align-items: stretch;
+  }
+  .leaderboardFilters button {
+    width: 100%;
+    text-align: center;
+  }
+  .currentUserHighlight.outsideList {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  /* Consider hiding less critical columns or further reducing padding if needed */
+  .leaderboardTable th.optionalColumn, /* Add this class to th you might hide */
+  .leaderboardTable td.optionalColumn { /* Add this class to td you might hide */
+    /* display: none; */ /* Uncomment to hide */
+  }
+}
+/* In c:/Users/misba/OneDrive/Documents/workopoly1_proj/frontend/src/components/Leaderboard/Leaderboard.module.css */
+
+/* ... other existing styles ... */
+/* .usernameCell and .usernameText styles are now primarily in the main block above,
+   ensure there are no conflicting rules here if this second block is a separate addition.
+   If this is a duplicate/override section, it's best to consolidate.
+   Assuming the `gap` property on `.usernameCell` from above is the primary spacing mechanism. */
+
+
+
+/* Existing styles for usernameCell to ensure badge fits well */
+.usernameCell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Add gap between icon, username, and badge */
+}
+
+.usernameText {
+  white-space: nowrap; /* Prevent username from wrapping too early */
+}
+/* c:/Users/misba/OneDrive/Documents/workopoly1_proj/frontend/src/components/Leaderboard/Leaderboard.module.css */
+/* ... other existing styles ... */
+
+.tierBadge { /* General styling for all tier badges */
+  display: inline-block;
+  padding: 0.2em 0.5em; /* Slightly smaller padding for leaderboard */
+  font-size: 0.7rem;  /* Slightly smaller font for leaderboard */
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle; /* Align with text */
+  border-radius: 0.25rem;
+  margin-left: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.silverBadge {
+  composes: tierBadge;
+  background-color: #c0c0c0; /* Silver */
+  color: #333;
+}
+
+.goldBadge {
+  composes: tierBadge;
+  background-color: #ffd700; /* Gold */
+  color: #4c3b00;
+}
+
+.diamondBadge {
+  composes: tierBadge;
+  color: #fff; 
+  background-image: linear-gradient(135deg, var(--accent-interactive, #1b81a1), var(--accent-cta, #3c157b));
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1), 0 0 3px rgba(60, 21, 123, 0.4);
+}

@@ -1,0 +1,240 @@
+/* src/components/Navbar/Navbar.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Using variables from Home.module.css for consistency */
+:root { /* Ensure these variables are defined globally or here */
+  /* Core colors (Task Manager Theme) */
+  --bg-section: #354a54; /* New Background */
+  --bg-card: #eae3dc; /* Pale warm cream for cards/containers */
+  --bg-header-footer: #354a54; /* New Background */
+
+  --text-primary-dark-bg: #f0f0f0; /* New Light Text */
+  --text-secondary-dark-bg: #81b2c9; /* New Secondary/Accent (for muted text) */
+
+  --text-primary-light-bg: #1f1a18; /* Primary dark text on light backgrounds (cards) */
+  --text-secondary-light-bg: #6a6a6a; /* Secondary subtle text on light backgrounds (cards) */
+  --text-on-gradient: #f0f0f0; /* New Light Text */
+
+
+  /* Accent colors */
+  --accent-cta: #3c157b; /* New Highlight/CTA/Brand Flair */
+  --accent-highlight: #3c157b; /* New Highlight/CTA/Brand Flair */
+  --accent-interactive: #1b81a1; /* New Primary/Dominant */
+}
+
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2.5rem; /* Increased horizontal padding */
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease; /* Keep */
+  /* Apply Solid Background from new palette */ /* Keep comment */
+  background-color: var(--bg-header-footer); /* Use the specified header/footer background */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
+  color: var(--text-primary-dark-bg); /* Use light primary text */
+  gap: 1rem;
+  box-sizing: border-box;
+}
+
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Slightly more gap */
+  text-decoration: none;
+  flex-shrink: 0;
+  max-width: calc(100% - 200px);
+}
+
+.logoImage {
+  max-height: 45px; /* Slightly larger logo */
+  transition: transform 0.3s ease;
+  border-radius: 50%; /* Make logo circular if desired */
+}
+
+.logoImage:hover {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.logoText {
+  font-weight: 700;
+  font-size: 1.8rem; /* Slightly larger */
+  color: var(--text-primary-dark-bg); /* Use light primary text */
+  font-family: 'Poppins', sans-serif;
+  transition: color 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2); /* Subtle text shadow */
+}
+
+.logoText:hover {
+  color: var(--accent-highlight); /* Use new Highlight/CTA on hover */
+  transform: scale(1.03);
+}
+
+.navLinks {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem; /* Increased gap */
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navLinks li {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.navLinks li a,
+.dropbtn {
+  text-decoration: none;
+  color: var(--text-secondary-dark-bg); /* Use light secondary text */
+  font-size: 1rem; /* Keep */
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  transition: color 0.3s ease, transform 0.3s ease;
+  position: relative;
+  padding: 6px 10px; /* Adjusted padding */
+  background: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+
+.navLinks li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px; /* Position slightly below */
+  left: 50%; /* Keep */
+  transform: translateX(-50%);
+  background-color: var(--accent-highlight); /* Use new Highlight/CTA for underline */
+  transition: width 0.3s ease;
+}
+
+.navLinks li a:hover,
+.dropbtn:hover {
+  color: var(--accent-highlight); /* Use new Highlight/CTA */
+  transform: translateY(-2px);
+}
+
+.navLinks li a:hover::after {
+  width: calc(100% - 16px); /* Adjust if padding changed */
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownContent {
+  visibility: hidden; /* Use visibility for smoother transitions */
+  position: absolute;
+  background-color: var(--bg-card); /* Use light card background */
+  min-width: 220px; /* Increased width */
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15); /* Softer, larger shadow */
+  border-radius: 10px; /* Softer radius */
+  padding: 12px 0;
+  border: 1px solid rgba(0,0,0,0.1); /* Subtle border for light card */
+  font-family: 'Poppins', sans-serif;
+  z-index: 1010; /* Ensure it's above other navbar content */
+  left: 50%;
+  margin-top: 10px; /* More space below button */
+  opacity: 0;
+  transform: translate(-50%, -10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s; /* Delay hiding visibility */
+  pointer-events: none; /* Prevent interaction when hidden */
+}
+
+.dropdownItem {
+  color: var(--text-primary-light-bg); /* Use dark text for dropdown */
+  padding: 12px 24px; /* Increased padding */
+  text-decoration: none;
+  display: block;
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease; /* Added transform */
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.dropdownItem:hover {
+  background-color: var(--accent-highlight); /* Use new Highlight/CTA for hover */
+  color: var(--text-primary-dark-bg); /* Light text on hover */
+  transform: translateX(5px); /* Slight indent on hover */
+}
+
+/* Correctly show the dropdown */
+.dropdown .show {
+  visibility: visible; /* Make visible */
+  opacity: 1;
+  transform: translate(-50%, 0);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0s; /* Show immediately */
+  pointer-events: auto; /* Allow interaction when shown */
+}
+
+/* --- Responsive --- */
+/* Adjust breakpoints and styles as needed */
+@media (max-width: 1024px) {
+   .navLinks { gap: 1.5rem; } /* Adjust gap */
+   .navbar { padding: 0.8rem 2rem; }
+}
+@media (max-width: 992px) {
+  .navLinks { gap: 1.2rem; }
+  .logoText { font-size: 1.6rem; }
+}
+@media (max-width: 768px) {
+  .navbar { flex-direction: column; align-items: center; padding: 1rem; gap: 1rem; }
+  .logoContainer { margin-bottom: 0.5rem; max-width: 100%; }
+  .navLinks { gap: 1rem; width: 100%; justify-content: center; margin-bottom: 0; }
+  .dropdownContent { min-width: 200px; } /* Adjust dropdown width */
+}
+@media (max-width: 480px) {
+  .navbar { padding: 0.8rem 1rem; }
+  .navLinks { gap: 0.8rem; flex-direction: column; align-items: center; }
+  .navLinks li { width: 100%; text-align: center; }
+  .navLinks li a, .dropbtn { padding: 10px 15px; width: 100%; display: block; font-size: 1rem; box-sizing: border-box; }
+  .navLinks li a::after { display: none; }
+  .navLinks li a:hover, .dropbtn:hover { transform: none; background-color: rgba(255,255,255,0.1); border-radius: 4px; color: var(--accent-highlight); } /* Subtle hover on mobile */
+  .dropdown { width: 100%; } /* Keep */
+  .dropdownContent {
+    position: static;
+    box-shadow: none;
+    border: none;
+    background-color: transparent;
+    margin-top: 5px;
+    border-radius: 0;
+    width: 100%;
+    opacity: 1; /* Ensure opacity is 1 */
+    transform: none;
+    transition: none;
+    padding: 0;
+    visibility: visible; /* Ensure visible */
+    display: none; /* Start hidden on mobile */
+    pointer-events: none;
+  }
+  .dropdown .show {
+    transform: none;
+    display: block; /* Use display block for mobile static layout */
+    pointer-events: auto;
+  } /* Keep */
+  .dropdownItem { text-align: center; padding: 10px 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); color: var(--text-primary-dark-bg); } /* Use light text for mobile dropdown, adjust border */
+  .dropdownItem:last-child { border-bottom: none; }
+   .dropdownItem:hover { background-color: rgba(255,255,255,0.15); transform: none; } /* Keep */
+}

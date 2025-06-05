@@ -1,0 +1,331 @@
+/* c:/Users/misba/OneDrive/Documents/workopoly1_proj/frontend/src/components/SignUp/SignUp.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* --- CSS Variables (Using Home Page Theme) --- */
+:root {
+  /* Core colors (Task Manager Theme) */
+  --clr-primary: #5C6BC0; /* Soft Indigo */
+  --clr-accent: #FF6F61; /* Coral Rose */
+  --clr-success: #81C784; /* Emerald Mint */
+  --clr-text-primary: #333333; /* Charcoal Gray */
+  --clr-text-muted: #777C85; /* Cool Gray */
+  --clr-text-on-dark: #FAFAFA; /* Snow White */
+  --clr-text-on-accent: #FFFFFF; /* Pure White */
+  --clr-bg-main: #FAFAFA; /* Snow White */
+  --clr-bg-card: #FFFFFF; /* Pure White for signup card, can also use #F1F2F6 for consistency */
+  --clr-bg-input: #F8F9FA; /* Light grey for input background */
+
+  /* Standard Text & Backgrounds */
+  --input-border-signup: #ced4da; /* Standard input border */
+  --input-focus-border-signup: var(--clr-primary); /* Soft Indigo for focus */
+  --shadow-color-signup: rgba(0, 0, 0, 0.08); /* Softer shadow */
+  --shadow-color-signup-btn: rgba(255, 111, 97, 0.3); /* Coral Rose shadow for button */
+
+  /* Gradient from Home.module.css */
+  --gradient-main: linear-gradient(135deg, var(--clr-primary), var(--clr-success)); /* Soft Indigo to Emerald Mint */
+}
+
+/* --- Animations (Keep as is) --- */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes subtleBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@keyframes inputPop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+@keyframes slideInDown {
+  from { opacity: 0; transform: translateY(-50%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* --- Container (Split Screen) --- */
+.signUpContainer {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--clr-bg-main); /* Use main theme background */
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+/* --- Left Side (Graphic/Welcome) --- */
+.graphicSide {
+  flex: 0 0 45%;
+  /* USE THE MAIN THEME GRADIENT */
+  background: var(--gradient-main);
+  color: var(--clr-text-on-dark); /* Light text on gradient */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+  position: relative;
+  animation: slideInLeft 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  opacity: 0;
+}
+
+.graphicSide h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.graphicSide p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.7;
+  max-width: 400px;
+  opacity: 0.9;
+}
+
+.graphicSide .logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 2rem;
+}
+
+
+/* --- Right Side (Form) --- */
+.formSide {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  animation: slideInRight 1s cubic-bezier(0.23, 1, 0.32, 1) 0.2s forwards;
+  opacity: 0;
+  overflow-y: auto;
+}
+
+/* --- Form Card --- */
+.signUpForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 480px; /* Slightly wider for better spacing */
+  padding: 40px 35px; /* Increased padding */
+  background-color: var(--clr-bg-card);
+  border-radius: 16px; /* Softer radius */
+  box-shadow: 0 10px 30px var(--shadow-color-signup); /* Slightly larger shadow */
+  border: 1px solid var(--input-border-signup);
+}
+
+.signUpHeadline {
+  text-align: center;
+  margin-bottom: 30px; /* More space */
+  color: var(--clr-text-primary); /* Dark primary text on light card */
+  font-size: clamp(1.8rem, 4vw, 2.2rem); /* Adjusted size */
+  font-weight: 700;
+}
+
+/* --- Form Elements --- */
+.signUpForm label {
+  margin-top: 18px; /* More space */
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--clr-text-muted); /* Dark secondary text */
+  text-align: left;
+  font-size: 0.9rem; /* Consistent size */
+}
+
+.signUpForm input {
+  padding: 15px 18px; /* More padding */
+  border: 1px solid var(--input-border-signup);
+  border-radius: 10px; /* Softer radius */
+  margin-bottom: 20px; /* More space */
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  color: var(--clr-text-primary); /* Dark text for input */
+  background-color: var(--clr-bg-input);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.signUpForm input::placeholder {
+  color: #adb5bd;
+}
+
+.signUpForm input:focus {
+  outline: none;
+  border-color: var(--input-focus-border-signup);
+  background-color: #ffffff;
+  /* Use consistent focus shadow */
+  box-shadow: 0 0 0 3px rgba(92, 107, 192, 0.25); /* Soft Indigo focus shadow */
+  transform: scale(1.01);
+}
+
+/* --- Button --- */
+.signUpForm button {
+  background: var(--clr-accent); /* Coral Rose button */
+  color: var(--clr-text-on-accent); /* Light text on button */
+  border: none;
+  padding: 15px 30px; /* Consistent padding */
+  border-radius: 50px; /* Pill shape */
+  font-size: 1.1rem; /* Consistent size */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px var(--shadow-color-signup-btn);
+  font-weight: 600;
+  margin-top: 30px; /* More space */
+  width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 0.5px;
+}
+
+.signUpForm button:hover {
+  transform: translateY(-4px) scale(1.02); /* Consistent hover */
+  box-shadow: 0 8px 20px rgba(255, 111, 97, 0.35); /* Darker Coral Rose shadow */
+}
+
+.signUpForm button:active {
+  transform: translateY(-1px) scale(0.99); /* Consistent active */
+  box-shadow: 0 4px 10px var(--shadow-color-signup-btn);
+}
+
+/* --- Link --- */
+.loginLinkContainer {
+  margin-top: 30px; /* More space */
+  font-size: 0.9rem;
+  color: var(--clr-text-muted);
+  text-align: center;
+}
+
+.loginLink {
+  color: var(--clr-accent); /* Coral Rose for link */
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.loginLink::after { /* Animated underline */
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--clr-accent); /* Coral Rose underline */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-out;
+}
+
+.loginLink:hover::after {
+  transform: scaleX(1);
+}
+
+/* --- Error Message --- */
+.errorMessage {
+  color: #e53e3e; /* Error Red */
+  font-size: 0.85rem;
+  background-color: rgba(229, 62, 62, 0.1); /* Light red background */
+  margin-top: -12px;
+  margin-bottom: 12px;
+  text-align: left;
+  min-height: 1.2em;
+  padding: 4px 8px; /* Added some padding */
+  border-radius: 4px; /* Added border-radius */
+}
+
+/* --- Admin Checkbox (Keep if needed) --- */
+.adminCheckboxContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0 5px 0;
+  font-size: 0.9rem;
+  color: var(--clr-text-muted); /* Dark secondary text */
+  text-align: left;
+}
+.adminCheckboxContainer input[type="checkbox"] {
+  width: 17px; height: 17px; margin: 0; box-shadow: none; cursor: pointer;
+  accent-color: var(--clr-accent); flex-shrink: 0; /* Coral Rose checkbox */
+}
+
+/* --- Divider --- */
+.dividerContainer {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 25px 0; /* More space */
+  color: var(--clr-text-muted);
+}
+
+.dividerLine {
+  flex-grow: 1;
+  height: 1px;
+  background-color: var(--input-border-signup);
+}
+
+.dividerText {
+  padding: 0 15px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--clr-text-muted);
+}
+
+/* --- Google Button Container --- */
+.googleButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px; /* Space before login link */
+}
+
+
+/* --- Responsiveness (Keep as is, animations adjusted) --- */
+@media (max-width: 992px) {
+  .signUpContainer {
+    flex-direction: column;
+  }
+  .graphicSide {
+    flex: 0 0 auto;
+    min-height: 35vh;
+    width: 100%;
+    animation: slideInDown 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+  .formSide {
+    flex: 1;
+    width: 100%;
+    padding: 40px 20px;
+    align-items: flex-start;
+    margin-top: -30px;
+    position: relative;
+    z-index: 1;
+    animation: slideInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) 0.2s forwards;
+  }
+  .signUpForm {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .graphicSide {
+    min-height: 30vh;
+    padding: 30px 20px;
+  }
+  .graphicSide h1 { font-size: 2rem; }
+  .graphicSide p { font-size: 0.95rem; }
+  .formSide { padding: 30px 15px; margin-top: -20px; }
+  .signUpForm { padding: 30px 20px; }
+  .signUpHeadline { font-size: 1.7rem; margin-bottom: 20px; }
+  .signUpForm button { padding: 14px 25px; font-size: 1rem; } /* Adjusted padding */
+}

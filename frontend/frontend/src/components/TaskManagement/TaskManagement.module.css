@@ -1,0 +1,159 @@
+/* src/components/TaskManagement/TaskManagement.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Subtle background pattern (optional) */
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 60px);
+  background-color: #f8f7ff; /* Lighter base */
+  background-image:
+    radial-gradient(circle at 1px 1px, #e3e0f3 1px, transparent 0); /* Subtle dots */
+  background-size: 20px 20px; /* Dot spacing */
+  padding: 50px 25px; /* Increased padding */
+  font-family: 'Poppins', sans-serif;
+  opacity: 0;
+  animation: fadeIn 0.9s ease-out forwards; /* Slightly slower animation */
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.contentWrapper {
+  max-width: 1000px; /* Slightly wider max-width */
+  width: 100%;
+}
+
+/* Optional Icon/Image Styling */
+.pageIcon {
+  font-size: 3.8rem; /* Slightly larger */
+  color: #8685ef;
+  margin-bottom: 20px; /* More space */
+  text-shadow: 2px 2px 5px rgba(134, 133, 239, 0.2); /* Subtle shadow */
+}
+
+.pageImage {
+  max-width: 280px; /* Larger image */
+  height: auto;
+  margin-bottom: 25px;
+}
+
+.pageTitle {
+  color: #6A67CE;
+  font-size: clamp(2.2rem, 5.5vw, 3rem); /* Larger title */
+  font-weight: 700;
+  margin-bottom: 18px; /* Adjusted margin */
+  letter-spacing: -0.5px; /* Subtle spacing */
+}
+
+.pageSubtitle {
+  font-size: clamp(1.05rem, 3vw, 1.25rem); /* Slightly larger */
+  color: #555;
+  margin-bottom: 50px; /* More space */
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7; /* Increased line height */
+}
+
+.featureList {
+  display: grid;
+  /* Adjust minmax for potentially 3 columns */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px; /* Increased gap */
+  margin-bottom: 50px;
+  text-align: left;
+}
+
+.featureItem {
+  background: linear-gradient(145deg, #ffffff 0%, #fdfcff 100%); /* Subtle gradient */
+  padding: 25px; /* More padding */
+  border-radius: 12px; /* More rounded */
+  box-shadow: 0 5px 18px rgba(227, 224, 243, 0.7); /* Enhanced shadow */
+  border: 1px solid #e8e5f5; /* Slightly adjusted border */
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative; /* For potential pseudo-elements */
+  overflow: hidden; /* Ensure pseudo-elements don't overflow */
+}
+
+/* Optional: Add a subtle top border accent on hover */
+.featureItem::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #8685ef;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+}
+
+.featureItem:hover {
+  transform: translateY(-6px) scale(1.02); /* More pronounced hover */
+  box-shadow: 0 10px 25px rgba(134, 133, 239, 0.4);
+}
+
+.featureItem:hover::before {
+    transform: scaleX(1); /* Show border on hover */
+}
+
+/* Optional: Icon within feature item */
+.featureIcon {
+    font-size: 1.5rem;
+    color: #8685ef;
+    margin-right: 10px;
+    vertical-align: middle; /* Align icon nicely */
+}
+
+.featureItem h3 {
+  color: #6A67CE; /* Darker purple for heading */
+  font-size: 1.15rem; /* Slightly larger */
+  font-weight: 600;
+  margin-bottom: 10px; /* More space */
+  display: flex; /* Align icon and text if using icons */
+  align-items: center;
+}
+
+.featureItem p {
+  font-size: 0.98rem; /* Slightly larger */
+  color: #444; /* Slightly darker text */
+  line-height: 1.65;
+}
+
+.callToAction {
+  font-size: 1.15rem; /* Slightly larger */
+  font-weight: 500;
+  color: #6A67CE;
+  margin-top: 25px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+   /* Adjust grid for tablets if needed */
+   .featureList {
+       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+   }
+}
+
+@media (max-width: 768px) {
+  .pageContainer {
+    padding: 40px 20px;
+  }
+  .pageSubtitle {
+    margin-bottom: 40px;
+  }
+  .featureList {
+    gap: 20px;
+    /* Ensure single column if needed, though auto-fit often handles it */
+    /* grid-template-columns: 1fr; */
+  }
+}

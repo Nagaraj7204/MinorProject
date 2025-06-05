@@ -1,0 +1,520 @@
+/* src/components/UserProfile/UserProfile.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  /* Core colors (Task Manager Theme from Home.module.css) */
+  --bg-section: #354a54;
+  --bg-card: #ffffff;
+  --bg-header-footer: #354a54;
+
+  --text-primary-dark-bg: #f0f0f0;
+  --text-secondary-dark-bg: #81b2c9;
+
+  --text-primary-light-bg: #1f1a18;
+  --text-secondary-light-bg: #4b5563;
+  --text-on-gradient: #f0f0f0;
+
+  /* Accent colors (Task Manager Theme) */
+  --accent-cta: #3c157b; /* Violet */
+  --accent-highlight: #3c157b; /* Violet */
+  --accent-interactive: #1b81a1; /* Teal */
+  --accent-divider: #81b2c9; /* Sky Blue */
+
+  /* Standard UI Elements */
+  --input-border-color: #d1d5db;
+  --input-focus-border-color: var(--accent-interactive);
+  --input-focus-shadow: 0 0 0 3px rgba(27, 129, 161, 0.2);
+  --card-border-color: #e0e0e0;
+  --card-shadow-color: rgba(0, 0, 0, 0.05); /* Softer shadow */
+  --card-shadow-hover-color: rgba(0, 0, 0, 0.1);
+
+  --color-success: #28a745;
+  --color-error: #dc3545;
+  --color-error-bg-light: rgba(220, 53, 69, 0.05);
+  --color-error-border: rgba(220, 53, 69, 0.3);
+  --color-error-text: #b91c1c;
+
+  --font-primary: 'Poppins', sans-serif;
+  --font-secondary: 'Inter', sans-serif;
+
+  --transition-fast: all 0.2s ease-in-out;
+  --transition-medium: all 0.3s ease-in-out;
+
+  /* Badge specific colors */
+  --badge-gold-bg: rgba(255, 215, 0, 0.15);
+  --badge-gold-text: #b8860b;
+  --badge-gold-border: #ffd700;
+  --badge-silver-bg: rgba(192, 192, 192, 0.15);
+  --badge-silver-text: #607d8b;
+  --badge-silver-border: #c0c0c0;
+  --badge-bronze-bg: rgba(205, 127, 50, 0.15);
+  --badge-bronze-text: #8c5820;
+  --badge-default-bg: rgba(27, 129, 161, 0.1);
+  --badge-default-text: var(--accent-interactive);
+  --badge-default-border: var(--accent-divider);
+}
+
+.userProfilePage {
+  padding: 2rem;
+  max-width: 1100px; /* Wider for two-column layout */
+  margin: 2rem auto;
+  background-color: #f4f7f9; /* Light page background */
+  color: var(--text-primary-light-bg);
+  font-family: var(--font-secondary);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0,0,0, 0.08);
+}
+
+.userProfilePage h1 {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--card-border-color);
+  color: var(--accent-cta); /* Violet */
+  text-align: center;
+  font-size: 2.5rem; /* Larger */
+  font-weight: 700;
+  font-family: var(--font-primary);
+}
+
+.profileContentGrid {
+  display: grid;
+  grid-template-columns: 300px 1fr; /* Sidebar-like column for picture and actions, main content */
+  gap: 2.5rem;
+}
+
+.profileSidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.profileMainContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.profileSection {
+  background-color: var(--bg-card);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px var(--card-shadow-color);
+  border: 1px solid var(--card-border-color);
+}
+
+.profileSection h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--accent-interactive); /* Teal */
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-family: var(--font-primary);
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--accent-divider); /* Sky Blue */
+}
+
+/* Profile Picture Area in Sidebar */
+.profilePictureContainer {
+  position: relative;
+  width: 200px; /* Larger */
+  height: 200px;
+  margin-bottom: 1rem; /* Space below picture */
+}
+
+.profilePicture {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid var(--bg-card);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.defaultProfileIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 100px; /* Larger icon */
+  color: var(--accent-divider); /* Sky Blue */
+  background-color: #e9ecef; /* Light grey */
+  border-radius: 50%;
+  border: 5px solid var(--bg-card);
+  box-sizing: border-box;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.uploadIconLabel {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: var(--accent-interactive); /* Teal */
+  border-radius: 50%;
+  padding: 0.7rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+}
+
+.uploadIconLabel:hover {
+  background-color: var(--accent-cta); /* Violet on hover */
+  transform: scale(1.1);
+}
+
+.uploadIcon {
+  color: var(--text-primary-dark-bg); /* Light text */
+  font-size: 1.4rem;
+}
+
+.profileActions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Basic Info Section */
+.infoGrid {
+  display: grid;
+  grid-template-columns: auto 1fr; /* Label and value */
+  gap: 1rem 1.5rem;
+  align-items: center;
+}
+
+.infoGrid label {
+  font-weight: 600;
+  color: var(--text-secondary-light-bg);
+  text-align: left; /* Align labels left */
+  font-size: 0.9rem;
+  font-family: var(--font-primary);
+}
+
+.infoGrid span,
+.infoGrid input[type="text"],
+.infoGrid input[type="email"] {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: var(--text-primary-light-bg);
+  background-color: #f8f9fa; /* Light background for fields */
+  border: 1px solid var(--input-border-color);
+}
+
+.infoGrid input[type="text"],
+.infoGrid input[type="email"] {
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.infoGrid input[type="text"]:focus,
+.infoGrid input[type="email"]:focus {
+  border-color: var(--input-focus-border-color);
+  box-shadow: var(--input-focus-shadow);
+  outline: none;
+  background-color: var(--bg-card); /* White on focus */
+}
+
+.infoGrid input[type="text"].editableField { /* Style for the editable username field */
+  background-color: var(--bg-card); /* White background when editable */
+  border: 1px solid var(--input-focus-border-color); /* Highlight border */
+}
+
+.infoGrid span {
+  min-height: calc(1.6rem + 2 * 0.8rem); /* Match input height */
+  display: flex;
+  align-items: center;
+  word-break: break-word; /* Prevent long text from breaking layout */
+}
+
+.pointsBalance {
+  font-weight: 700;
+  color: var(--accent-cta); /* Violet */
+  font-size: 1.3rem;
+  background-color: rgba(60, 21, 123, 0.1) !important; /* Light Violet background */
+  padding: 0.5rem 1rem !important;
+  border-radius: 20px !important;
+  display: inline-block !important;
+  border: 1px solid transparent !important;
+}
+
+.usernameDisplay {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lockIconContainer {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  cursor: help;
+}
+
+.lockIcon {
+  color: var(--text-secondary-light-bg);
+  font-size: 1em;
+  opacity: 0.7;
+}
+
+.unlockTooltip {
+  position: absolute;
+  bottom: 140%; /* Position further above */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--bg-section); /* Dark Neutral */
+  color: var(--text-primary-dark-bg); /* Light text */
+  padding: 0.6rem 0.9rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-fast), visibility var(--transition-fast);
+  font-family: var(--font-secondary);
+}
+.lockIconContainer:hover .unlockTooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Badges Section - Styles for individual badges if they were to be listed */
+/* These are now simplified as the section is removed, but keeping for TierBadge */
+.badgesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center; /* Center badges if they don't fill the row */
+}
+
+.badge {
+  display: inline-flex; /* Use flex for icon + text if needed */
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--badge-default-text);
+  background-color: var(--badge-default-bg);
+  border: 1px solid var(--badge-default-border);
+  padding: 0.6rem 1.2rem; /* More padding */
+  border-radius: 25px; /* Pill shape */
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: var(--font-primary);
+  transition: var(--transition-fast);
+  cursor: default;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.badge:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+.badge.gold {
+  background-color: var(--badge-gold-bg);
+  color: var(--badge-gold-text);
+  border-color: var(--badge-gold-border);
+}
+.badge.silver {
+  background-color: var(--badge-silver-bg);
+  color: var(--badge-silver-text);
+  border-color: var(--badge-silver-border);
+}
+.badge.bronze {
+  background-color: var(--badge-bronze-bg);
+  color: var(--badge-bronze-text);
+  border-color: var(--badge-bronze-border);
+}
+
+
+/* Buttons (General styling, used in profileActions) */
+.button {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: var(--font-primary);
+  border: none;
+  transition: var(--transition-fast);
+  text-align: center;
+  display: inline-block;
+  width: 100%; /* Make buttons in sidebar take full width */
+  box-sizing: border-box;
+}
+
+.buttonPrimary {
+  composes: button;
+  background-color: var(--accent-interactive); /* Teal */
+  color: var(--text-primary-dark-bg); /* Light text */
+  box-shadow: 0 4px 12px rgba(27, 129, 161, 0.2); /* Teal shadow */
+}
+.buttonPrimary:hover:not(:disabled) {
+  background-color: #166a83; /* Darker Teal */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(27, 129, 161, 0.3);
+}
+.buttonPrimary:disabled {
+  background-color: var(--accent-divider);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.buttonSecondary {
+  composes: button;
+  background-color: #e9ecef; /* Light grey */
+  color: var(--text-primary-light-bg); /* Dark text */
+  border: 1px solid var(--card-border-color);
+}
+.buttonSecondary:hover:not(:disabled) {
+  background-color: #d8dde1; /* Darker grey */
+  border-color: #ced4da;
+  transform: translateY(-1px);
+}
+.buttonSecondary:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+
+/* Message Styles */
+.message {
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  border-width: 1px;
+  border-style: solid;
+  text-align: center;
+}
+
+.errorMessage {
+  composes: message;
+  color: var(--color-error-text);
+  background-color: var(--color-error-bg-light);
+  border-color: var(--color-error-border);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) { /* Tablet and smaller */
+  .profileContentGrid {
+    grid-template-columns: 1fr; /* Stack sidebar and main content */
+  }
+  .profileSidebar {
+    margin-bottom: 2rem; /* Add space when stacked */
+  }
+  .userProfilePage {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .userProfilePage h1 {
+    font-size: 2rem;
+  }
+  .profileSection h2 {
+    font-size: 1.25rem;
+  }
+  .profileSection {
+    padding: 1.5rem;
+  }
+  .infoGrid {
+    grid-template-columns: 1fr; /* Stack label and value */
+    gap: 0.5rem 1rem;
+  }
+  .infoGrid label {
+    text-align: left;
+    margin-bottom: 0.25rem;
+  }
+  .statItemCard strong {
+    font-size: 1.6rem;
+  }
+  .defaultProfileIcon {
+    font-size: 75px;
+  }
+  .uploadIconLabel {
+    padding: 0.6rem;
+    bottom: 5px;
+    right: 5px;
+  }
+  .uploadIcon {
+    font-size: 1.2rem;
+  }
+  /* .statsGrid { // Removed as section is removed
+    grid-template-columns: 1fr;
+  } */
+  .button {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .userProfilePage {
+    padding: 1rem;
+    margin: 1rem auto;
+    border-radius: 0; /* Full width on small screens */
+  }
+  .profilePictureContainer {
+    width: 150px; /* Smaller picture for mobile */
+    height: 150px;
+  }
+}
+/* c:/Users/misba/OneDrive/Documents/workopoly1_proj/frontend/src/components/UserProfile/UserProfile.module.css */
+/* ... other styles ... */
+
+.appearanceSettings .infoGrid {
+  /* Overlap with existing infoGrid or define new styles */
+  /* For example, to ensure the ThemeSelector aligns well: */
+  display: grid; /* If not already set by .infoGrid */
+  grid-template-columns: auto 1fr; /* Label and select/message */
+  align-items: center;
+  gap: 10px 20px; /* row-gap column-gap */
+}
+/* In c:/Users/misba/OneDrive/Documents/workopoly1_proj/frontend/src/components/UserProfile/UserProfile.module.css */
+
+/* ... other styles ... */
+
+/* Add or update in UserProfile.module.css */
+/* c:/Users/misba/OneDrive/Documents/workopoly1_proj/frontend/src/components/Leaderboard/Leaderboard.module.css */
+/* ... other existing styles ... */
+
+.tierBadge { /* General styling for all tier badges */
+  display: inline-block;
+  padding: 0.2em 0.5em; /* Slightly smaller padding for leaderboard */
+  font-size: 0.7rem;  /* Slightly smaller font for leaderboard */
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle; /* Align with text */
+  border-radius: 0.25rem;
+  margin-left: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.silverBadge {
+  composes: tierBadge;
+  background-color: #c0c0c0; /* Silver */
+  color: #333;
+}
+
+.goldBadge {
+  composes: tierBadge;
+  background-color: #ffd700; /* Gold */
+  color: #4c3b00;
+}
+
+.diamondBadge {
+  composes: tierBadge;
+  color: #fff; 
+  background-image: linear-gradient(135deg, var(--accent-interactive, #1b81a1), var(--accent-cta, #3c157b));
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1), 0 0 3px rgba(60, 21, 123, 0.4);
+}

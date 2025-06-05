@@ -1,0 +1,173 @@
+/* src/components/PomodoroTimer/PomodoroTimer.module.css */
+.pomodoroContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 120px); /* Adjust based on your Navbar/Footer height */
+  padding: 20px;
+  transition: background-color 0.5s ease;
+  font-family: var(--font-body, 'Inter', sans-serif);
+}
+
+.workMode { background-color: var(--clr-secondary-bg-accent, #E0F7FA); }
+.shortBreakMode { background-color: var(--clr-success-light, #d4edda); } /* Assuming you have a light success color */
+.longBreakMode { background-color: var(--clr-primary-light, #a8b5e9); } /* Assuming you have a light primary color */
+
+.timerCard {
+  background-color: var(--clr-bg-card, #FFFFFF);
+  padding: 30px 40px;
+  border-radius: var(--border-radius-medium, 16px);
+  box-shadow: var(--card-shadow-hover, 0 10px 28px rgba(51, 51, 51, 0.18));
+  text-align: center;
+  width: 100%;
+  max-width: 450px;
+  border-top: 5px solid; /* Dynamic border color based on mode */
+  transition: border-color 0.5s ease;
+}
+
+.workMode .timerCard { border-top-color: var(--clr-primary, #5C6BC0); }
+.shortBreakMode .timerCard { border-top-color: var(--clr-success, #81C784); }
+.longBreakMode .timerCard { border-top-color: var(--clr-warning, #FFD54F); } /* Using warning for long break for variety */
+
+
+.modeSelector {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+  gap: 10px;
+}
+
+.modeSelector button {
+  padding: 8px 15px;
+  border: 1px solid var(--border-color-card, rgba(0,0,0,0.1));
+  background-color: transparent;
+  color: var(--clr-text-muted, #777C85);
+  border-radius: var(--border-radius-pill, 50px);
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.modeSelector button:hover {
+  background-color: var(--clr-bg-input, #F8F9FA);
+  border-color: var(--clr-primary, #5C6BC0);
+  color: var(--clr-primary, #5C6BC0);
+}
+
+.modeSelector button.activeMode {
+  background-color: var(--clr-primary, #5C6BC0);
+  color: var(--clr-text-on-accent, #FFFFFF);
+  border-color: var(--clr-primary, #5C6BC0);
+  font-weight: 600;
+}
+.shortBreakMode .modeSelector button.activeMode { background-color: var(--clr-success, #81C784); border-color: var(--clr-success, #81C784); }
+.longBreakMode .modeSelector button.activeMode { background-color: var(--clr-warning, #FFD54F); border-color: var(--clr-warning, #FFD54F); }
+
+
+.timerDisplay {
+  font-size: clamp(4rem, 15vw, 6.5rem); /* Responsive font size */
+  font-weight: 700;
+  color: var(--clr-text-primary, #333333);
+  margin: 20px 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  letter-spacing: -2px;
+}
+
+.timerIcon {
+  font-size: 2.5rem; /* Smaller than timer text */
+  opacity: 0.7;
+}
+.workMode .timerIcon { color: var(--clr-primary); }
+.shortBreakMode .timerIcon { color: var(--clr-success); }
+.longBreakMode .timerIcon { color: var(--clr-warning); }
+
+
+.currentModeText {
+  font-size: 1.1rem;
+  color: var(--clr-text-muted, #777C85);
+  margin-bottom: 30px;
+  font-weight: 500;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Increased gap */
+  margin-bottom: 25px;
+}
+
+.controlButton {
+  padding: 12px 20px;
+  border: none;
+  border-radius: var(--border-radius-soft, 12px);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-medium);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+.controlButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+.controlButton:active:not(:disabled) {
+  transform: translateY(0px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+.controlButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.startButton {
+  background-color: var(--clr-primary, #5C6BC0);
+  color: var(--clr-text-on-accent, #FFFFFF);
+}
+.startButton:hover:not(:disabled) { background-color: #4e5aa5; } /* Darker primary */
+
+.pauseButton {
+  background-color: var(--clr-warning, #FFD54F);
+  color: var(--clr-text-primary, #333333); /* Darker text for yellow */
+}
+.pauseButton:hover:not(:disabled) { background-color: #f0c040; } /* Darker warning */
+
+.resetButton {
+  background-color: var(--clr-text-muted, #777C85);
+  color: var(--clr-text-on-accent, #FFFFFF);
+}
+.resetButton:hover:not(:disabled) { background-color: #636a73; } /* Darker muted */
+
+.skipButton {
+  background-color: var(--clr-accent, #FF6F61);
+  color: var(--clr-text-on-accent, #FFFFFF);
+}
+.skipButton:hover:not(:disabled) { background-color: #e65a4f; } /* Darker accent */
+
+
+.sessionInfo {
+  margin-top: 20px;
+  font-size: 0.95rem;
+  color: var(--clr-text-muted, #777C85);
+}
+.sessionInfo p {
+  margin: 5px 0;
+}
+
+.loadingMessage {
+  margin-top: 15px;
+  color: var(--clr-primary);
+  font-style: italic;
+}
+.errorMessage {
+  margin-top: 15px;
+  color: var(--clr-accent);
+  font-weight: 500;
+}
